@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 16:28:25 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/01 17:03:45 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/09 23:50:51 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <unistd.h>
 
-void ft_putnbr(int nb)
+void	ft_putnbr(int nb)
 {
-	char str[10];
-	int  i;
-	int  is_negative;
+	char	str[10];
+	int		i;
+	int		is_negative;
 
 	is_negative = 0;
 	if (nb < 0)
@@ -37,16 +36,4 @@ void ft_putnbr(int nb)
 		write(1, "-", 1);
 	while (i >= 0)
 		write(1, &str[i--], 1);
-}
-int main()
-{
-	ft_putnbr(-2147483648);
-	printf("\n");
-	ft_putnbr(2147483647);
-	printf("\n");
-	ft_putnbr(28);
-	printf("\n");
-	ft_putnbr(-483648);
-	printf("\n");
-	ft_putnbr(0);
 }

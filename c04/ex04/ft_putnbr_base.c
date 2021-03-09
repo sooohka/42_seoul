@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 12:27:36 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/02 16:13:11 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/09 23:52:15 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,4 @@ void	ft_putnbr_base(int nbr, char *base)
 		i--;
 		write(1, &str[i], 1);
 	}
-}
-
-int		main(void)
-{
-	ft_putnbr_base(30, "01-");
-	return (0);
 }

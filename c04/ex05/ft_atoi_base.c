@@ -3,30 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:13:30 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/02 16:29:00 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/09 23:57:23 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int my_strlen(char *str)
+int		my_strlen(char *str)
 {
 	int i;
 
 	i = 0;
 	while (str[i])
 		i++;
-	return i
+	return (i);
 }
 
-int check(char *base)
+int		check(char *base)
 {
-	int i;
-	int len;
+	int		i;
+	int		len;
 
 	len = my_strlen(base);
-
 	if (len < 2)
 		return (0);
 	while (base[i])
@@ -40,7 +39,7 @@ int check(char *base)
 	return (len);
 }
 
-int ft_atoi_base(char *str, char *base)
+int		ft_atoi_base(char *str, char *base)
 {
 	int		i;
 	int		len;
@@ -48,19 +47,10 @@ int ft_atoi_base(char *str, char *base)
 
 	len = check(base);
 	if (!len)
-		return len;
+		return (0);
 	while (str[i])
 	{
-
+		i++;
 	}
-	return;
-}
-
-#include <stdio.h>
-int main(void)
-{
-	char *str = "123asds13\nhello";
-	char *base = "01";
-	printf("%d\n", ft_atoi_base(str, base));
-	return (0);
+	return (len);
 }

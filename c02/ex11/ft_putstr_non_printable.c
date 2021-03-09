@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 10:41:18 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/08 02:11:28 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/09 19:17:03 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ int		is_printable(char c)
 
 void	ft_putstr_non_printable(char *str)
 {
-	char	*hex;
-	int		i;
+	char				*hex;
+	int					i;
+	unsigned char		c;
 
 	hex = "0123456789abcdef";
 	i = 0;
@@ -39,9 +40,10 @@ void	ft_putstr_non_printable(char *str)
 			ft_putchar(str[i]);
 		else
 		{
+			c = str[i];
 			ft_putchar('\\');
-			ft_putchar(hex[str[i] / 16]);
-			ft_putchar(hex[str[i] % 16]);
+			ft_putchar(hex[c / 16]);
+			ft_putchar(hex[c % 16]);
 		}
 		i++;
 	}

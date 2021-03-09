@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 19:42:38 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/08 05:30:51 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/09 19:17:29 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,52 +24,41 @@ int		is_upper(char c)
 	return (0);
 }
 
-int		is_special(char c)
+int		is_number(char c)
 {
-	int	i;
-
-	i = -1;
-	if (!(c >= ' ' && c <= '~'))
-		return (0);
 	if (c >= '0' && c <= '9')
-		return (0);
-	if (is_lower(c) || is_upper(c))
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }
 
-int		my_stren(char *str)
+int		is_alphanumeric(char c)
 {
 	int i;
 
 	i = -1;
-	while (str[++i])
-		;
-	return (i);
+	if (is_lower(c) || is_upper(c) || is_number(c))
+		return (1);
+	return (0);
 }
 
 char	*ft_strcapitalize(char *str)
 {
 	int i;
-	int j;
 
 	i = 0;
-	j = 0;
-	while (i < my_stren(str))
+	while (str[i])
 	{
-		if (is_special(str[i]) || !str[i])
-		{
-			if (is_lower(str[j]))
-				str[j] = str[j] - 32;
-			while (j <= i)
-			{
-				j++;
-				if (is_upper(str[j]))
-					str[j] = str[j] + 32;
-			}
-		}
+		if (is_upper(str[i]))
+			str[i] += 32;
 		i++;
 	}
-	str[i]='\0'; 
+	i = 0;
+	while (str[i])
+	{
+		if (!is_alphanumeric(str[i - 1]) && is_lower(str[i]))
+			str[i] -= 32;
+		i++;
+	}
+	str[i] = '\0';
 	return (str);
 }

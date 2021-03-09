@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 20:56:26 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/08 00:58:23 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/09 18:58:46 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,19 @@ int				my_strlen(char *str)
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
 	unsigned int i;
+	unsigned int len;
 
 	i = 0;
-	if (src[i] && size)
+	len = my_strlen(src);
+	if (!size)
+		return (len);
+	if (!dest)
+		return (0);
+	while ((i < size - 1) && src[i])
 	{
-		while (i < size - 1)
-		{
-			dest[i] = src[i];
-			i++;
-		}
-		dest[i] = '\0';
+		dest[i] = src[i];
+		i++;
 	}
-	return (my_strlen(src));
+	dest[i] = 0;
+	return (len);
 }

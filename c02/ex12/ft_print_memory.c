@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 12:44:37 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/08 04:59:40 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/09 19:18:56 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,14 @@ void	get_hexa(char *arr)
 		if (i % 2)
 			write(1, " ", 1);
 		if (!arr[i])
-		{
-			if (!(i % 2))
-			{
-				write(1, "   ", 3);
-			}
 			break ;
-		}
 	}
-	while (i++ < 16)
+	while (++i < 16)
+	{
+		if (i % 2)
+			write(1, " ", 1);
 		write(1, "  ", 2);
+	}
 }
 
 void	get_str(char *arr)
@@ -96,8 +94,8 @@ void	*ft_print_memory(void *addr, unsigned int size)
 			if (!(i % 16))
 			{
 				get_addr((char *)&arr[i]);
-				 get_hexa((char *)&arr[i]);
-				 get_str((char *)&arr[i]);
+				get_hexa((char *)&arr[i]);
+				get_str((char *)&arr[i]);
 			}
 		}
 	}

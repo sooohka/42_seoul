@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 20:09:36 by sookang           #+#    #+#             */
-/*   Updated: 2021/02/28 21:41:50 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/09 23:11:45 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		my_strlen(char *str)
+int				my_strlen(char *str)
 {
 	int i;
 
@@ -22,8 +22,8 @@ int		my_strlen(char *str)
 
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	int		len;
-	int		i;
+	unsigned int		len;
+	unsigned int		i;
 
 	i = 0;
 	len = my_strlen(dest);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 19:24:41 by sookang           #+#    #+#             */
-/*   Updated: 2021/02/28 21:39:57 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/09 23:11:07 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int		my_strlen(char *str)
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	int		dest_len;
-	int		i;
+	unsigned int		dest_len;
+	unsigned int		i;
 
 	i = 0;
 	dest_len = my_strlen(dest);

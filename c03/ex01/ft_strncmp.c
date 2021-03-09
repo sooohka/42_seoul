@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 16:58:13 by sookang           #+#    #+#             */
-/*   Updated: 2021/02/28 21:39:25 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/09 23:11:19 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int		i;
+	unsigned int		i;
 
 	i = 0;
 	while (i < n)

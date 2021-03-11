@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 17:06:09 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/11 15:26:00 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/11 20:25:15 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,17 @@ int		is_number(char c)
 	return (0);
 }
 
+int		is_space(char c)
+{
+	if (c == ' ' || c == '\n')
+		return (1);
+	else if (c == '\t' || c == '\v' || c == '\f')
+		return (1);
+	else if (c == '\r')
+		return (1);
+	return (0);
+}
+
 int		ft_atoi(char *str)
 {
 	int i;
@@ -31,16 +42,15 @@ int		ft_atoi(char *str)
 	int neg_flag;
 	int num_flag;
 
-	i = -1;
+	i = 0;
 	neg_flag = 1;
-	num_flag = 1;
 	num = 0;
-	while (str[++i] && (num_flag || is_number(str[i])))
+	while (is_space(str[i]))
+		i++;
+	while (str[i] && (num_flag || is_number(str[i])))
 	{
-		if (str[i] == '+' || str[i] == ' ' || str[i] == '\n'\
-		|| str[i] == '\t' || str[i] == '\v' || str[i] == '\f'\
-		|| str[i] == '\r')
-			continue;
+		if (is_space(str[i]))
+			return (0);
 		if (is_negative(str[i]))
 			neg_flag *= -1;
 		if (is_number(str[i]))
@@ -49,6 +59,7 @@ int		ft_atoi(char *str)
 			num += (str[i] - 48);
 			num_flag = 0;
 		}
+		i++;
 	}
 	return (neg_flag * num);
 }

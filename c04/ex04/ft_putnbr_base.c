@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 12:27:36 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/11 15:30:03 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/11 20:21:03 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,27 @@ int		my_strlen(char *str)
 
 int		check(char *base)
 {
-	int len;
 	int i;
+	int j;
 
+	j = 0;
 	i = 0;
-	len = my_strlen(base);
-	if (len < 2)
+	if (my_strlen(base) < 2)
 		return (0);
 	while (base[i])
 	{
-		if (base[i] == base[i + 1])
-			return (0);
 		if (base[i] == '+' || base[i] == '-' || base[i] < ' ' || base[i] > '~')
 			return (0);
+		while (j < i)
+		{
+			if (base[i] == base[j])
+				return (0);
+			j++;
+		}
+		j = 0;
 		i++;
 	}
-	return (len);
+	return (my_strlen(base));
 }
 
 void	ft_putnbr_base(int nbr, char *base)
@@ -47,23 +52,21 @@ void	ft_putnbr_base(int nbr, char *base)
 	int		i;
 	char	str[100];
 	int		len;
-	int		neg;
 
 	i = 0;
-	neg = 0;
 	len = check(base);
+	if (!len)
+		return ;
 	if (nbr < 0)
 	{
 		nbr *= -1;
-		neg = 1;
+		write(1, "-", 1);
 	}
-	while (nbr > 0 && len)
+	while (nbr > 0)
 	{
 		str[i++] = base[nbr % len];
 		nbr /= len;
 	}
-	if (neg)
-		write(1, "-", 1);
 	while (i > 0)
 	{
 		i--;

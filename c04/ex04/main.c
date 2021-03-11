@@ -5,7 +5,7 @@ int main(void)
 	printf("\n");
 	ft_putnbr_base(30, "0123456789abcdef");
 	printf("\n");
-	ft_putnbr_base(-30, "0123456789abcdef");
+	ft_putnbr_base(-30, "0123456789abcdtk");
 	printf("\n");
 	ft_putnbr_base(30, "01");
 	printf("\n");

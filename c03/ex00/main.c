@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
-int main()
+extern int ft_strcmp(char *s1, char *s2);
+int        main()
 {
 	char s1[20] = "hello world";
 	char s2[20] = "hello world";
@@ -9,6 +10,8 @@ int main()
 	char c1[10] = "aaa";
 	char c2[10] = "aab";
 	char c3[10] = "aac";
+	char d1[10] = "\200";
+	char d2[10] = "\0";
 	printf("s1:%s   ", s1);
 	printf("s2:%s\n", s2);
 	printf("j1:%s   ", j1);
@@ -25,4 +28,6 @@ int main()
 	printf("my function %d\n", ft_strcmp(c1, c2));
 	printf("c3 vs c2\n strcmp function: %d  ", strcmp(c3, c2));
 	printf("my function %d\n", ft_strcmp(c3, c2));
+	printf("d1 vs d2\n strcmp function: %d  ", strcmp(d1, d2));
+	printf("my function %d\n", ft_strcmp(d1, d2));
 }

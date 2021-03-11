@@ -20,7 +20,7 @@ int main()
 	printf("c2:%s   ", c2);
 	printf("c3:%s\n", c3);
 	printf("---------------\n");
-	printf("s1 vs s2  \n strcat function: %s  |", strcat(s1, s2));
+	printf("s1 vs s2  \n strcat function: %s  |", strcat(s1 , s2));
 	printf("my function %s\n", ft_strcat(s1, s2));
 	printf("j1 vs j2  \n strcat function: %s  |", strcat(j1, j2));
 	printf("my function %s\n", ft_strcat(j1, j2));

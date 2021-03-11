@@ -3,27 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 19:52:58 by sookang           #+#    #+#             */
-/*   Updated: 2021/02/28 21:40:06 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/11 11:47:01 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strstr(char *str, char *to_find)
 {
-	int		i;
-	int		j;
+	int i;
+	int j;
 
-	i = -1;
-	j = -1;
-	while (str[++i])
+	i = 0;
+	j = 0;
+	if (!to_find[j])
+		return (str);
+	while (str[i])
 	{
-		while (to_find[++j])
+		while (str[i + j] && str[i + j] == to_find[j])
 		{
-			if ((str[i + j] != to_find[j]) && str[i + j])
-				return ("\0");
+			if (!to_find[j + 1])
+				return (&str[i]);
+			j++;
 		}
+		j = 0;
+		i++;
 	}
-	return (&str[i + j]);
+	return (0);
 }

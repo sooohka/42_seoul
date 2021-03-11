@@ -6,22 +6,16 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 16:43:06 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/07 19:05:59 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/11 09:52:37 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_strcmp(char *s1, char *s2)
 {
-	int		i;
+	int i;
 
 	i = 0;
-	while (s1[i] != '\0')
-	{
-		if (s1[i] != s2[i])
-		{
-			return (s1[i] - s2[i]);
-		}
+	while (s1[i] && s2[i] && (s1[i] == s2[i]))
 		i++;
-	}
-	return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

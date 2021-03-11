@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 12:50:41 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/11 16:05:35 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/11 16:07:06 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int		ft_ten_queens_puzzle(void)
 	while (++i < SIZE)
 		arr[i] = 0;
 	count = 0;
-	initializer(arr);
 	get_queen(arr, -1, &count);
 	return (count);
 }

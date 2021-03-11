@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 12:27:36 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/09 23:52:15 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/11 15:30:03 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,23 @@ void	ft_putnbr_base(int nbr, char *base)
 	int		i;
 	char	str[100];
 	int		len;
+	int		neg;
 
 	i = 0;
+	neg = 0;
 	len = check(base);
+	if (nbr < 0)
+	{
+		nbr *= -1;
+		neg = 1;
+	}
 	while (nbr > 0 && len)
 	{
-		str[i] = base[nbr % len];
+		str[i++] = base[nbr % len];
 		nbr /= len;
-		i++;
 	}
+	if (neg)
+		write(1, "-", 1);
 	while (i > 0)
 	{
 		i--;

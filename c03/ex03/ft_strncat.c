@@ -6,13 +6,13 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 19:24:41 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/11 16:53:32 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/11 18:19:42 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+unsigned int		ft_strlen(char *str)
 {
-	int		i;
+	unsigned int		i;
 
 	i = 0;
 	while (str[i])
@@ -20,7 +20,7 @@ int		ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strncat(char *dest, char *src, unsigned int nb)
+char				*ft_strncat(char *dest, char *src, unsigned int nb)
 {
 	unsigned int	i;
 	unsigned int	destlen;

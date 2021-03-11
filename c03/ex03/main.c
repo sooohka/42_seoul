@@ -11,9 +11,7 @@ int          main()
 	char c1[100] = "aaa";
 	char c2[100] = "aab";
 	char c3[100] = "aac";
-	char k1[100]="BRBOCXHBmCZWlnrYMHddjMKDsQQJmbbhiRJLxXAzg ";
-	char k2[100]="YOfaAmFKzTjYfQaFcvPxuITGyUrgbUdNqqezHshZr";
 
-	printf("%s", strncat(k1, k2, 1000));
+	printf("%s", strncat(c1, c3, 0));
 	return (0);
 }

@@ -3,24 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ten_queens_puzzle.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 12:50:41 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/05 23:11:05 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/11 16:05:35 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#define SIZE 5
-
-void	initializer(int arr[SIZE])
-{
-	int i;
-
-	i = -1;
-	while (++i < SIZE)
-		arr[i] = 0;
-}
+#define SIZE 10
 
 void	visualizer(int arr[SIZE])
 {
@@ -78,15 +69,13 @@ int		ft_ten_queens_puzzle(void)
 {
 	int arr[SIZE];
 	int count;
+	int	i;
 
+	i = -1;
+	while (++i < SIZE)
+		arr[i] = 0;
 	count = 0;
 	initializer(arr);
 	get_queen(arr, -1, &count);
 	return (count);
-}
-
-#include <stdio.h>
-int main(void)
-{
-	printf("%d",ft_ten_queens_puzzle());
 }

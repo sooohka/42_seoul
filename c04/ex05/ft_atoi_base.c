@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:13:30 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/09 23:57:23 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/11 15:57:14 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,24 @@ int		my_strlen(char *str)
 	return (i);
 }
 
+int		is_negative(char c)
+{
+	return (c == '-' ? 1 : 0);
+}
+
+int		is_number(char c)
+{
+	if (c >= 48 && c <= 57)
+	{
+		return (1);
+	}
+	return (0);
+}
+
 int		check(char *base)
 {
-	int		i;
-	int		len;
+	int i;
+	int len;
 
 	len = my_strlen(base);
 	if (len < 2)
@@ -41,16 +55,21 @@ int		check(char *base)
 
 int		ft_atoi_base(char *str, char *base)
 {
-	int		i;
-	int		len;
-	char	inted[100];
+	int i;
+	int len;
+	int neg_flag;
 
+	i = 0;
 	len = check(base);
 	if (!len)
 		return (0);
 	while (str[i])
 	{
+		if (str[i] == '+' || str[i] == ' ' || str[i] == '\n'\
+		|| str[i] == '\t' || str[i] == '\v' || str[i] == '\f'\
+		|| str[i] == '\r')
+			continue ;
 		i++;
 	}
-	return (len);
+	return (0);
 }

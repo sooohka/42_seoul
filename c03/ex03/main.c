@@ -1,16 +1,16 @@
 
 #include <stdio.h>
 #include <string.h>
-extern char *ft_strncat(char *dest, char *src, unsigned int nb);
+char *ft_strncat(char *dest, char *src, unsigned int nb);
 int          main()
 {
-	char s1[30] = "hello world";
-	char s2[] = "hello world";
-	char j1[30] = "hi world";
-	char j2[] = "bye world";
-	char c1[30] = "aaa";
-	char c2[] = "aab";
-	char c3[30] = "aac";
+	char s1[100] = "hello world";
+	char s2[100] = "hello world";
+	char j1[100] = "hi world";
+	char j2[100] = "bye world";
+	char c1[100] = "aaa";
+	char c2[100] = "aab";
+	char c3[100] = "aac";
 
 	printf("s1:%s   ", s1);
 	printf("s2:%s\n", s2);

@@ -11,23 +11,9 @@ int          main()
 	char c1[100] = "aaa";
 	char c2[100] = "aab";
 	char c3[100] = "aac";
+	char k1[100]="BRBOCXHBmCZWlnrYMHddjMKDsQQJmbbhiRJLxXAzg ";
+	char k2[100]="YOfaAmFKzTjYfQaFcvPxuITGyUrgbUdNqqezHshZr";
 
-	printf("s1:%s   ", s1);
-	printf("s2:%s\n", s2);
-	printf("j1:%s   ", j1);
-	printf("j2:%s\n", j2);
-	printf("c1:%s   ", c1);
-	printf("c2:%s   ", c2);
-	printf("c3:%s\n", c3);
-	printf("---------------\n");
-	printf("s1 vs s2  \n strncat function: %s  |", strncat(s1, s2, 5));
-	printf("my function %s\n", ft_strncat(s1, s2, 5));
-	printf("j1 vs j2  \n strncat function: %s  |", strncat(j1, j2, 5));
-	printf("my function %s\n", ft_strncat(j1, j2, 5));
-	printf("c1 vs c2  \n strncat function: %s  |", strncat(c1, c2, 5));
-	printf("my function %s\n", ft_strncat(c1, c2, 5));
-	printf("c3 vs c2  \n strncat function: %s  |", strncat(c3, c2, 5));
-	printf("my function %s\n", ft_strncat(c3, c2, 5));
-
+	printf("%s", strncat(k1, k2, 1000));
 	return (0);
 }

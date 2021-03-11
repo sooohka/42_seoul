@@ -6,25 +6,32 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 19:24:41 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/11 15:32:30 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/11 16:53:32 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncat(char *dest, char *src, unsigned int nb)
+int		ft_strlen(char *str)
 {
-	int i;
-	int j;
+	int		i;
 
 	i = 0;
-	j = 0;
-	while (dest[i])
+	while (str[i])
 		i++;
-	while (src[j] && j < (int)nb)
+	return (i);
+}
+
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
+{
+	unsigned int	i;
+	unsigned int	destlen;
+
+	destlen = ft_strlen(dest);
+	i = 0;
+	while (src[i] && i < nb)
 	{
-		dest[i] = src[j];
+		dest[destlen + i] = src[i];
 		i++;
-		j++;
 	}
-	dest[i] = '\0';
+	dest[destlen + i] = '\0';
 	return (dest);
 }

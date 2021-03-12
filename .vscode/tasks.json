@@ -30,6 +30,7 @@
             "label": "C bulid for gcc",
             "command": "gcc",
             "args": [
+                "-g3",
                 "-Wextra",
                 "-Wall",
                 "-Werror",

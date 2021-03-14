@@ -6,13 +6,13 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 22:27:56 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/14 10:28:56 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/14 10:29:36 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
 	int i;
 
@@ -24,7 +24,7 @@ void ft_putstr(char *str)
 	}
 }
 
-void swap(char **a, char **b)
+void	swap(char **a, char **b)
 {
 	char *c;
 
@@ -33,7 +33,7 @@ void swap(char **a, char **b)
 	*b = c;
 }
 
-int ft_strcmp(char *s1, char *s2)
+int		ft_strcmp(char *s1, char *s2)
 {
 	while (*s1 || *s2)
 	{
@@ -47,7 +47,7 @@ int ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
-void sort(int argc, char *argv[])
+void	sort(int argc, char *argv[])
 {
 	int i;
 
@@ -63,7 +63,7 @@ void sort(int argc, char *argv[])
 	}
 }
 
-int main(int argc, char *argv[])
+int		main(int argc, char *argv[])
 {
 	int i;
 

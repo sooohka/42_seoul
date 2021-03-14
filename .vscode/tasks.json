@@ -71,15 +71,6 @@
                 "clear": true,
             },
             "args": [
-<<<<<<< HEAD
-                "first",
-                "fir",
-                "second",
-                "third",
-                "fourth",
-                "fifth",
-                "&&", 
-=======
                 "Aa",
                 "",
                 "",
@@ -113,7 +104,6 @@
                 "cat",
                 "-e",
                 "&&",
->>>>>>> 60ddec8fbf55379638188245d0b7e846d8c95318
                 "rm",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ]

@@ -1,6 +1,7 @@
 
 int ft_is_prime(int nb);
 #include <stdio.h>
+#include <limits.h>
 int main()
 {
 	printf("%d\n", ft_is_prime(-2));
@@ -17,4 +18,6 @@ int main()
 	printf("%d\n", ft_is_prime(9));
 	printf("%d\n", ft_is_prime(10));
 	printf("%d\n", ft_is_prime(11));
+	printf("%d\n", ft_is_prime(INT_MAX));
+	printf("%d\n", ft_is_prime(INT_MIN));
 }

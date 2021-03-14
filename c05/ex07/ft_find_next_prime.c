@@ -6,24 +6,26 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 17:42:27 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/11 16:01:08 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/15 01:45:32 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_find_next_prime(int nb)
 {
-	int i;
+	unsigned int i;
+	unsigned int n;
 
 	i = 2;
 	if (nb < 2)
 		return (2);
-	while (i < nb)
+	n = (unsigned int)nb;
+	while (i * i <= n)
 	{
-		if (nb % i == 0)
+		if (n % i == 0)
 		{
-			return (ft_find_next_prime(nb + 1));
+			return (ft_find_next_prime(n + 1));
 		}
 		i++;
 	}
-	return (nb);
+	return ((int)n);
 }

@@ -6,8 +6,8 @@
             "label": "C bulid for gcc with main.c",
             "command": "gcc",
             "args": [
-                //  "-Wextra","-Wall" , "-Werror",
                 "-g3",
+                "-Wextra","-Wall" , "-Werror",
                 "${file}",
                 "${fileDirname}/main.c",
                 "-o",

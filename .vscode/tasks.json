@@ -26,7 +26,6 @@
             "problemMatcher": []
         },
         {
-            
             "type": "shell",
             "label": "C bulid for gcc",
             "command": "gcc",
@@ -59,7 +58,7 @@
                 "clear": true
             },
             "args": [
-                "&&", 
+                "&&",
                 "rm",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ]
@@ -73,12 +72,39 @@
                 "clear": true,
             },
             "args": [
-                "first",
-                "second",
-                "third",
-                "fourth",
-                "fifth",
-                "&&", 
+                "Aa",
+                "",
+                "",
+                "Ba",
+                "a",
+                "bBA",
+                "aB",
+                "",
+                "aBB",
+                "",
+                "bb",
+                "",
+                "BA",
+                "AaA",
+                "a",
+                "a",
+                "ABA",
+                "Ab",
+                "B",
+                "bAa",
+                "AB",
+                "a",
+                "aB",
+                "a",
+                "b",
+                "",
+                "Ba",
+                "Ba",
+                "Ab",
+                "|",
+                "cat",
+                "-e",
+                "&&",
                 "rm",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ]

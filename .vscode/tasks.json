@@ -3,14 +3,15 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "C bulid for gcc with main.c",
+            "label": "C bulid for gcc",
             "command": "gcc",
             "args": [
-                //  "-Wextra","-Wall" , "-Werror",
-                "${file}",
-                "${fileDirname}/main.c",
+                "-Wextra",
+                "-Wall",
+                "-Werror",
+                "${fileDirname}/*.c",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}",
+                "${fileDirname}/a.out",
             ],
             "options": {
                 "cwd": "${workspaceRoot}"
@@ -25,18 +26,18 @@
             "problemMatcher": []
         },
         {
-            
             "type": "shell",
-            "label": "C bulid for gcc",
+            "label": "C bulid for gcc(debug)",
             "command": "gcc",
             "args": [
                 "-g3",
                 "-Wextra",
                 "-Wall",
                 "-Werror",
-                "${file}",
+                "${fileDirname}/*.c",
+                "${fileDirname}/*.h",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}",
+                "${fileDirname}/a.out",
             ],
             "options": {
                 "cwd": "${workspaceRoot}"
@@ -50,24 +51,28 @@
             },
             "problemMatcher": []
         },
+        //execute 
         {
             "type": "shell",
             "label": "execute",
-            "command": "${fileDirname}/${fileBasenameNoExtension}",
+            "command": "${fileDirname}/a.out",
             "group": "test",
             "presentation": {
                 "clear": true
             },
             "args": [
-                "&&", 
+                "|",
+                "cat",
+                "-e",
+                "&&",
                 "rm",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/a.out"
             ]
         },
         {
             "type": "shell",
             "label": "execute with arg",
-            "command": "${fileDirname}/${fileBasenameNoExtension}",
+            "command": "${fileDirname}/a.out",
             "group": "test",
             "presentation": {
                 "clear": true,
@@ -78,7 +83,10 @@
                 "third",
                 "fourth",
                 "fifth",
-                "&&", 
+                "|",
+                "cat",
+                "-e",
+                "&&",
                 "rm",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ]

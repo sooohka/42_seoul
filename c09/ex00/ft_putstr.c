@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:09:11 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/16 20:18:29 by sookang          ###   ########.fr       */
+/*   Created: 2021/03/01 16:21:48 by sookang           #+#    #+#             */
+/*   Updated: 2021/03/16 20:19:17 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+#include <unistd.h>
+
+void	ft_putstr(char *str)
 {
 	int i;
 
-	i = 0;
-	if (!str[i])
-		return (i);
+	i = -1;
 	while (str[++i])
-		;
-	return (i);
+	{
+		write(1, &str[i], 1);
+	}
 }

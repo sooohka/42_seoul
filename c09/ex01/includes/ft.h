@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:09:11 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/16 20:18:29 by sookang          ###   ########.fr       */
+/*   Created: 2021/03/16 19:30:02 by sookang           #+#    #+#             */
+/*   Updated: 2021/03/16 19:30:10 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
-{
-	int i;
 
-	i = 0;
-	if (!str[i])
-		return (i);
-	while (str[++i])
-		;
-	return (i);
-}
+#ifndef FT_H
+# define FT_H
+
+#include <stdio.h>
+
+void ft_putchar(char c);
+void ft_swap(int *a, int *b);
+void ft_putstr(char *str);
+int  ft_strlen(char *str);
+int  ft_strcmp(char *s1, char *s2);
+
+#endif

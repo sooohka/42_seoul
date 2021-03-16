@@ -1,33 +1,27 @@
-CC=gcc
-CFLAGS=-Wall -Wextra -Werror
-SRC=$(wildcard ./srcs/*.c)
-INC=./includes/
-ALL=ft_putchar.o ft_swap.o ft_putstr.o ft_strlen.o ft_strcmp.o
-all: libft.a
+NAME = libft.a
+SRCS = srcs/ft_putchar.c srcs/ft_swap.c srcs/ft_putstr.c srcs/ft_strlen.c \
+	   srcs/ft_strcmp.c
 
+OBJS = ${SRCS:.c=.o}
 
-ft_putchar.o: 
-	$(CC) $(CFLAGS) -c -o ./srcs/ft_putchar.o ./srcs/ft_putchar.c 
+CC		= gcc
+RM		= rm -f
 
-ft_swap.o: 
-	$(CC) $(CFLAGS) -c -o ./srcs/ft_swap.o ./srcs/ft_swap.c
+CFLAGS = -Wall -Wextra -Werror
 
-ft_putstr.o: 
-	$(CC) $(CFLAGS) -c -o ./srcs/ft_putchar.o ./srcs/ft_putstr.c
+.c.o:
+		${CC} ${CFLAGS} -I includes -c $< -o ${<:.c=.o}
 
-ft_strlen.o: 
-	$(CC) $(CFLAGS) -c -o ./srcs/ft_strlen.o ./srcs/ft_strlen.c
+$(NAME): ${OBJS}
+		ar rcs ${NAME} ${OBJS}
 
-ft_strcmp.o: 
-	$(CC) $(CFLAGS) -c -o ./srcs/ft_strcmp.o ./srcs/ft_strcmp.c
-
-libft.a: $(ALL)
-	ar rc libft.a  ./srcs/*.o
+all:	${NAME}
 
 clean:
-	rm */*.o
+		${RM} ${OBJS}
 
-fclean: clean
-	rm -f libft.a
+fclean:	clean
+		${RM} ${NAME}
 
-re: fclean all
+re:		fclean all
+#배낀거임으로 공부할것

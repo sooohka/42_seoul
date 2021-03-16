@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 20:22:17 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/17 02:11:49 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/17 06:16:57 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int		get_strs_length(char *str, char *charset)
 
 	i = 0;
 	count = 0;
+	if (!str[i])
+		return (0);
 	while (is_charset(str[i], charset))
 		i++;
 	while (str[i])

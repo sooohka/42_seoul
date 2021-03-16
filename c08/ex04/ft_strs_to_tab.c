@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 11:37:36 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/16 12:00:39 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/16 13:44:36 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,8 @@ struct	s_stock_str	*ft_strs_to_tab(int ac, char **av)
 	i = 0;
 	if (!(stock_str = (t_stock_str *)malloc(sizeof(t_stock_str) * (ac + 1))))
 		return (NULL);
-	while (i < ac)
+	while (i < ac && av[i])
 	{
-		if (!av[i])
-			return (NULL);
 		stock_str[i].size = ft_strlen(av[i]);
 		stock_str[i].str = av[i];
 		stock_str[i].copy = ft_strdup(av[i]);

@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 12:01:22 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/16 17:22:00 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/17 01:26:54 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,13 @@ void	ft_show_tab(struct s_stock_str *par)
 	{
 		print_str(par[i].str);
 		write(1, "\n", 1);
-		
 		if (par[i].size == 0)
 		{
 			write(1, "0", 1);
 		}
 		else
 		{
-			print_size(par[i].size)
+			print_size(par[i].size);
 		}
 		write(1, "\n", 1);
 		print_copy(par[i].copy);

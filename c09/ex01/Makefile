@@ -1,27 +1,40 @@
-NAME = libft.a
-SRCS = srcs/ft_putchar.c srcs/ft_swap.c srcs/ft_putstr.c srcs/ft_strlen.c \
-	   srcs/ft_strcmp.c
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/03/17 20:18:37 by sookang           #+#    #+#              #
+#    Updated: 2021/03/17 20:58:50 by sookang          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-OBJS = ${SRCS:.c=.o}
+CC		=	gcc
+CFLAGS	=	-Wall -Wextra -Werror
+TARGET	=	libft.a
+SRCS	=	./srcs/ft_putchar.c ./srcs/ft_putstr.c ./srcs/ft_strcmp.c ./srcs/ft_strlen.c ./srcs/ft_swap.c
+OBJS	=	$(SRCS:.c=.o)
+INCS	=	./includes
 
-CC		= gcc
-RM		= rm -f
 
-CFLAGS = -Wall -Wextra -Werror
+all			:	$(TARGET)
 
-.c.o:
-		${CC} ${CFLAGS} -I includes -c $< -o ${<:.c=.o}
+$(TARGET)	:	$(OBJS)
+	ar rc $(TARGET) $^
 
-$(NAME): ${OBJS}
-		ar rcs ${NAME} ${OBJS}
+%.o			:	%.c
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCS)
 
-all:	${NAME}
+clean		:
+	rm -f $(OBJS)
 
-clean:
-		${RM} ${OBJS}
+fclean		:	clean
+	rm -r $(TARGET)
 
-fclean:	clean
-		${RM} ${NAME}
+re			:	fclean $(TARGET)
 
-re:		fclean all
-#배낀거임으로 공부할것
+# # $@: name of target
+# # $<: name of first 의존성
+# # $^: name of all 의존성
+# #%.o: %.c : %이름을 가진 .o 파일을 생성하는데 사용하는 %.c파일  %는 같은이름

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 20:22:29 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/17 06:12:59 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/17 21:19:07 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int    get_strs_length(char *str, char *charset);
 
 int main()
 {
-	char   str[] = "";
+	char   *str = "  hello  wor,ld  b,y,e  ,, ,, ,";
 	char   charset[] = " , ";
 	char **strs;
 	int    i;
@@ -31,6 +31,5 @@ int main()
 		printf("\n");
 		i++;
 	}
-
 	return (0);
 }

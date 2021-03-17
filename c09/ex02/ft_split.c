@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 20:22:17 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/17 06:16:57 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/17 21:11:13 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		is_charset(char c, char *charset)
+int is_charset(char c, char *charset)
 {
 	int i;
 
@@ -26,7 +26,7 @@ int		is_charset(char c, char *charset)
 	return (0);
 }
 
-int		get_strs_length(char *str, char *charset)
+int get_strs_length(char *str, char *charset)
 {
 	int count;
 	int i;
@@ -39,8 +39,7 @@ int		get_strs_length(char *str, char *charset)
 		i++;
 	while (str[i])
 	{
-		if (is_charset(str[i], charset) && !is_charset(str[i + 1], charset) \
-		&& str[i + 1])
+		if (is_charset(str[i], charset) && !is_charset(str[i + 1], charset) && str[i + 1])
 		{
 			count++;
 		}
@@ -49,18 +48,13 @@ int		get_strs_length(char *str, char *charset)
 	return (count + 1);
 }
 
-char	**ft_split(char *str, char *charset)
+void assign_str(char **strs, char *str, char *charset, int total_len)
 {
-	char	**strs;
-	int		i;
-	int		j;
-	int		count;
+	int i;
+	int j;
 
 	i = -1;
-	count = get_strs_length(str, charset);
-	if (!(strs = (char **)malloc(sizeof(char *) * (count + 1))))
-		return (NULL);
-	while (++i < count)
+	while (++i < total_len)
 	{
 		while (is_charset(*str, charset))
 			str++;
@@ -74,5 +68,18 @@ char	**ft_split(char *str, char *charset)
 		strs[i][j] = 0;
 	}
 	strs[i] = 0;
+}
+
+char **ft_split(char *str, char *charset)
+{
+	char **strs;
+	int    len;
+	char * initial_str;
+
+	initial_str = str;
+	len = get_strs_length(str, charset);
+	if (!(strs = (char **)malloc(sizeof(char *) * (len + 1))))
+		return (NULL);
+	assign_str(strs, initial_str, charset, len);
 	return (strs);
 }

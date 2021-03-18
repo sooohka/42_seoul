@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 20:22:29 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/18 15:19:13 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/18 21:41:50 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,15 @@ int    get_strs_length(char *str, char *charset);
 
 #include <stdio.h>
 
-int main()
+int main(int argc,char *argv[])
 {
-	char   *str = "d04xSbQcDWjFVC2XRpymbBNz4zeccMS4O";
-	char   charset[] = "kOP";
 	char **strs;
 	int    i;
-
+	if(argc==1)
+		return 0;
 	i = 0;
-	printf("%d\n",get_strs_length(str,charset));
-	strs = ft_split(str, charset);
+	printf("%d\n",get_strs_length(argv[1],argv[2]));
+	strs = ft_split(argv[1], argv[2]);
 	while (strs[i])
 	{
 		printf("%s", strs[i]);

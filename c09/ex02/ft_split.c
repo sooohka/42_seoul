@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 20:22:17 by sookang           #+#    #+#             */
-/*   Updated: 2021/03/18 15:20:46 by sookang          ###   ########.fr       */
+/*   Updated: 2021/03/18 21:39:40 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ int		get_strs_length(char *str, char *charset)
 
 	i = 0;
 	count = 0;
-	while (is_charset(str[i], charset))
+	while (is_charset(str[i], charset) && str[i])
 		i++;
 	if (!str[i])
 		return (0);
 	while (str[i])
 	{
-		if (is_charset(str[i], charset) && !is_charset(str[i + 1],\
-		charset) && str[i + 1])
+		if (is_charset(str[i], charset) &&\
+		!is_charset(str[i + 1], charset) && str[i + 1])
 		{
 			count++;
 		}
@@ -53,30 +53,33 @@ void	assign_str(char **strs, char *str, char *charset, int total_len)
 {
 	int i;
 	int j;
+	int k;
 
 	i = -1;
 	while (++i < total_len)
 	{
-		while (is_charset(*str, charset))
+		while (is_charset(*str, charset) && *str)
 			str++;
 		j = 0;
-		while (!is_charset(str[j], charset))
+		while (!is_charset(str[j], charset) && str[j])
 			j++;
 		strs[i] = (char *)malloc(sizeof(char) * (j + 1));
-		j = 0;
-		while (!is_charset(*str, charset))
-			strs[i][j++] = *(str++);
-		strs[i][j] = 0;
+		k = 0;
+		while (k < j)
+			strs[i][k++] = *(str++);
+		strs[i][k] = 0;
 	}
 	strs[i] = 0;
 }
 
 char	**ft_split(char *str, char *charset)
 {
-	char		**strs;
-	int			len;
-	char		*initial_str;
+	char	**strs;
+	int		len;
+	char	*initial_str;
+	int		i;
 
+	i = 0;
 	initial_str = str;
 	len = get_strs_length(str, charset);
 	if (!(strs = (char **)malloc(sizeof(char *) * (len + 1))))

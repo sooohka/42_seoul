@@ -3,39 +3,15 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "C bulid for gcc with main.c",
-            "command": "gcc",
-            "args": [
-                "-g3",
-                "-Wextra","-Wall" , "-Werror",
-                "${file}",
-                "${fileDirname}/main.c",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}",
-            ],
-            "options": {
-                "cwd": "${workspaceRoot}"
-            },
-            "presentation": {
-                "clear": true
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": []
-        },
-        {
-            "type": "shell",
             "label": "C bulid for gcc",
             "command": "gcc",
             "args": [
                 "-Wextra",
                 "-Wall",
                 "-Werror",
-                "${file}",
+                "${fileDirname}/*.c",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}",
+                "${fileDirname}/a.out",
             ],
             "options": {
                 "cwd": "${workspaceRoot}"
@@ -51,22 +27,52 @@
         },
         {
             "type": "shell",
+            "label": "C bulid for gcc(debug)",
+            "command": "gcc",
+            "args": [
+                "-g3",
+                "-Wextra",
+                "-Wall",
+                "-Werror",
+                "${fileDirname}/*.c",
+                "${fileDirname}/*.h",
+                "-o",
+                "${fileDirname}/a.out",
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "presentation": {
+                "clear": true
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        //execute 
+        {
+            "type": "shell",
             "label": "execute",
-            "command": "${fileDirname}/${fileBasenameNoExtension}",
+            "command": "${fileDirname}/a.out",
             "group": "test",
             "presentation": {
                 "clear": true
             },
             "args": [
+                "|",
+                "cat",
+                "-e",
                 "&&",
                 "rm",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/a.out"
             ]
         },
         {
             "type": "shell",
             "label": "execute with arg",
-            "command": "${fileDirname}/${fileBasenameNoExtension}",
+            "command": "${fileDirname}/a.out",
             "group": "test",
             "presentation": {
                 "clear": true,

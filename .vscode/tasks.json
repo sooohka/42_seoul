@@ -6,9 +6,7 @@
             "label": "C bulid for gcc",
             "command": "gcc",
             "args": [
-                "-Wextra",
-                "-Wall",
-                "-Werror",
+                 "-Wextra","-Wall" , "-Werror",
                 "${fileDirname}/*.c",
                 "-o",
                 "${fileDirname}/a.out",
@@ -35,7 +33,6 @@
                 "-Wall",
                 "-Werror",
                 "${fileDirname}/*.c",
-                "${fileDirname}/*.h",
                 "-o",
                 "${fileDirname}/a.out",
             ],
@@ -112,7 +109,8 @@
                 "-e",
                 "&&",
                 "rm",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "-rf",
+                "${fileDirname}/a.out*"
             ]
         }
     ]

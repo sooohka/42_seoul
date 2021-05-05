@@ -5,58 +5,57 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sookang <sookang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/03/09 18:24:09 by daelee            #+#    #+#              #
-#    Updated: 2021/05/04 17:20:09 by sookang          ###   ########.fr        #
+#    Created: 2021/05/05 15:27:20 by sookang           #+#    #+#              #
+#    Updated: 2021/05/05 17:20:19 by sookang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+
+# re
+CC		= gcc
+CFlAGS	= -Werror -Wall -Wextra
+
+
+FILES	= ft_isalnum \
+		ft_isdigit\
+		ft_memcpy\
+		ft_strncmp	\
+		ft_atoi		\
+		ft_isalpha	\
+		ft_isprint	\
+		ft_memmove	\
+		ft_tolower	\
+		ft_bzero	\
+		ft_isascii	\
+		ft_memccpy	\
+		ft_memset	\
+		ft_toupper	\
+		ft_memchr	\
+		ft_memcmp	\
+		ft_strlen	\
+		ft_strlcpy	\
+		
+OBJS=$(addprefix ./, $(addsuffix .o, ${FILES}))
+SRCS=$(addprefix ./, $(addsuffix .c, ${FILES}))
+
 NAME = libft.a
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-AR = ar rcs
-RM = rm -f
-
-FILES = ft_memset \
-		ft_bzero \
-		ft_memcpy \
-		ft_memccpy \
-		ft_memmove \
-		ft_strncmp \
-		ft_atoi \
-		ft_isalpha \
-		ft_isdigit \
-		ft_isalnum \
-		ft_isascii \
-		ft_isprint \
-		ft_toupper \
-		ft_tolower \
-
-
-SRCS_DIR = ./
-SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
-
-OBJS_DIR = ./
-OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
-
-
-.c.o: $(SRCS)
-	$(CC) $(CFLAGS) -c -o $@ $<
+all	:	$(NAME)
 
 $(NAME): $(OBJS)
-	$(AR) $@ $^
+	ar rc $@ $^
 
-bonus: $(OBJS)
-	$(AR) $(NAME) $^
+# .c.o: 
+# 	$(CC) $(CFlAGS) -c $< -o ${<:.c=.o}
 
-all: $(NAME)
+
+re: fclean all
+
 
 clean:
-	$(RM) $(OBJS) 
+	rm  $(OBJS) 
 
 fclean: clean
-	$(RM) $(NAME)
+	rm f $(NAME)
 
-re: clean all
-
-.PHONY: bonus all clean fclean re
+.PHONY: all clean fclean re

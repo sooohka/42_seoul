@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/05 17:27:27 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/05 18:19:13 by sookang          ###   ########.fr       */
+/*   Created: 2021/05/05 18:17:06 by sookang           #+#    #+#             */
+/*   Updated: 2021/05/05 18:18:51 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
+	unsigned int dest_len;
+	unsigned int src_len;
 	unsigned int i;
-	unsigned int len;
 
 	i = 0;
-	len = ft_strlen(src);
-	if (!size)
-		return (len);
-	if (!dest)
-		return (0);
-	while ((i < size - 1) && src[i])
+	dest_len = ft_strlen(dest);
+	src_len = ft_strlen(src);
+	if (size == 0)
+		return (src_len);
+	if (size <= dest_len)
+		return (size + src_len);
+	while (src[i] && i < size - dest_len - 1)
 	{
-		dest[i] = src[i];
+		dest[dest_len + i] = src[i];
 		i++;
 	}
-	dest[i] = 0;
-	return (len);
+	dest[dest_len + i] = 0;
+	return (src_len + dest_len);
 }

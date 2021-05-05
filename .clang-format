@@ -1,10 +1,3 @@
-#아래는 직접해야댐 ㅠ
-#global aligned
-#declarations aligned
-#declarations must be followed by one empty line
-#Empty line
-
-Language: Cpp
 AlignConsecutiveDeclarations: true
 AlignEscapedNewlinesLeft: true
 AllowAllParametersOfDeclarationOnNextLine: false
@@ -24,7 +17,7 @@ PointerAlignment: Right
 PenaltyBreakBeforeFirstCallParameter: 1
 PenaltyBreakString: 1
 PenaltyExcessCharacter: 0
-SpaceAfterCStyleCast: false
+SpaceAfterCStyleCast: true
 SpaceBeforeAssignmentOperators: true
 SpaceBeforeParens: ControlStatements
 SpaceInEmptyParentheses: false

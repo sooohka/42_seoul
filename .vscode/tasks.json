@@ -91,9 +91,13 @@
 				"clear": true
 			},
 			"args": [
-				"&&",
-				"rm",
-				"${fileDirname}/a.out"
+				"|",
+				"cat",
+				"-e",
+				"${fileDirname}/a.out",
+				// "&&",
+				// "rm",
+				// "${fileDirname}/a.out"
 			]
 		}
 	]

@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 18:17:06 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/05 18:18:51 by sookang          ###   ########.fr       */
+/*   Updated: 2021/05/10 17:14:22 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	unsigned int dest_len;
-	unsigned int src_len;
-	unsigned int i;
+	unsigned int	dest_len;
+	unsigned int	src_len;
+	unsigned int	i;
 
 	i = 0;
 	dest_len = ft_strlen(dest);

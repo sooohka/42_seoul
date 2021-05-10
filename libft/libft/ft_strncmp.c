@@ -6,9 +6,11 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 12:29:52 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/04 15:56:23 by sookang          ###   ########.fr       */
+/*   Updated: 2021/05/10 16:44:29 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int		ft_strncmp(char *s1, char *s2, unsigned int n)
 {

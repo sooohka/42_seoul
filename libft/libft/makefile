@@ -6,15 +6,15 @@
 #    By: sookang <sookang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/05 15:27:20 by sookang           #+#    #+#              #
-#    Updated: 2021/05/05 19:36:33 by sookang          ###   ########.fr        #
+#    Updated: 2021/05/10 18:10:20 by sookang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-# re
 CC		= gcc
 CFlAGS	= -Werror -Wall -Wextra
 
+RM		= rm -f
 
 FILES	= ft_isalnum \
 		ft_isdigit\
@@ -38,6 +38,8 @@ FILES	= ft_isalnum \
 		ft_strchr	\
 		ft_strrchr	\
 		ft_strnstr	\
+		ft_calloc	\
+		ft_strdup	\
 
 OBJS=$(addprefix ./, $(addsuffix .o, ${FILES}))
 SRCS=$(addprefix ./, $(addsuffix .c, ${FILES}))
@@ -55,11 +57,10 @@ $(NAME): $(OBJS)
 
 re: fclean all
 
-
 clean:
-	rm  $(OBJS) 
+	$(RM) *.o 
 
 fclean: clean
-	rm f $(NAME)
+	$(RM) -f $(NAME)
 
 .PHONY: all clean fclean re

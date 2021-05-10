@@ -6,9 +6,11 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:23:32 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/05 18:15:12 by sookang          ###   ########.fr       */
+/*   Updated: 2021/05/10 17:17:29 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int		is_sign(char c)
 {
@@ -48,7 +50,6 @@ int		ft_atoi(char *str)
 	num = 0;
 	while (is_space(str[i]))
 		i++;
-	
 	if (str[i] == '+' || str[i] == '-')
 		if (str[i++] == '-')
 			neg_flag *= -1;

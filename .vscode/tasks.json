@@ -1,0 +1,100 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "C bulid for gcc",
+			"command": "gcc",
+			"args": [
+				"-Wextra",
+				"-Wall",
+				"-Werror",
+				"${file}",
+				"-o",
+				"${fileDirname}/a.out"
+			],
+			"options": {
+				"cwd": "${workspaceRoot}"
+			},
+			"presentation": {
+				"clear": true
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"type": "shell",
+			"label": "C bulid all for gcc",
+			"command": "gcc",
+			"args": [
+				"-Wextra",
+				"-Wall",
+				"-Werror",
+				"${fileDirname}/*.c",
+				"-o",
+				"${fileDirname}/a.out"
+			],
+			"options": {
+				"cwd": "${workspaceRoot}"
+			},
+			"presentation": {
+				"clear": true
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"type": "shell",
+			"label": "C bulid for gcc(debug)",
+			"command": "gcc",
+			"args": [
+				"-g3",
+				"-Wextra",
+				"-Wall",
+				"-Werror",
+				"${file}",
+				"-o",
+				"${fileDirname}/a.out"
+			],
+			"options": {
+				"cwd": "${workspaceRoot}"
+			},
+			"presentation": {
+				"clear": true
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "norminette",
+			"command": "norminette",
+			"args": [
+				"${file}",
+			],
+			"problemMatcher": []
+		},
+		{
+			"type": "shell",
+			"label": "execute",
+			"command": "${fileDirname}/a.out",
+			"group": "test",
+			"presentation": {
+				"clear": true
+			},
+			"args": [
+				"&&",
+				"rm",
+				"${fileDirname}/a.out"
+			]
+		}
+	]
+}

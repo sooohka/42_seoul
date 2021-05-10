@@ -6,7 +6,7 @@
 #    By: sookang <sookang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/05 15:27:20 by sookang           #+#    #+#              #
-#    Updated: 2021/05/10 18:10:20 by sookang          ###   ########.fr        #
+#    Updated: 2021/05/10 21:45:25 by sookang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,10 @@ FILES	= ft_isalnum \
 		ft_strnstr	\
 		ft_calloc	\
 		ft_strdup	\
-
+		ft_substr	\
+		ft_strjoin	\
+		ft_strtrim	\
+		
 OBJS=$(addprefix ./, $(addsuffix .o, ${FILES}))
 SRCS=$(addprefix ./, $(addsuffix .c, ${FILES}))
 

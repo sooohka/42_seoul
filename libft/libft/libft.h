@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 18:19:19 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/10 18:05:02 by sookang          ###   ########.fr       */
+/*   Updated: 2021/05/10 21:45:11 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,8 @@ char *ft_strrchr(const char *s, int c);
 int   ft_tolower(int c);
 int   ft_toupper(int c);
 void *ft_calloc(size_t count, size_t size);
+char	*ft_strdup(const char *s1);
+char *ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char *ft_strtrim(char const *s1, char const *set);
 #endif

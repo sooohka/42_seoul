@@ -3,15 +3,15 @@
 	"tasks": [
 		{
 			"type": "shell",
-			"label": "C bulid for gcc",
-			"command": "gcc",
+			"label": "C파일 하나",
+			"command": "clang",
 			"args": [
 				"-Wextra",
 				"-Wall",
 				"-Werror",
 				"${file}",
 				"-o",
-				"${fileDirname}/a.out"
+				"${fileDirname}/${fileBasenameNoExtension}"
 			],
 			"options": {
 				"cwd": "${workspaceRoot}"
@@ -27,15 +27,15 @@
 		},
 		{
 			"type": "shell",
-			"label": "C bulid all for gcc",
-			"command": "gcc",
+			"label": "C파일 전부",
+			"command": "clang",
 			"args": [
 				"-Wextra",
 				"-Wall",
 				"-Werror",
 				"${fileDirname}/*.c",
 				"-o",
-				"${fileDirname}/a.out"
+				"${fileDirname}/${fileBasenameNoExtension}"
 			],
 			"options": {
 				"cwd": "${workspaceRoot}"
@@ -51,8 +51,8 @@
 		},
 		{
 			"type": "shell",
-			"label": "C bulid for gcc(debug)",
-			"command": "gcc",
+			"label": "C bulid for clang(debug)",
+			"command": "clang",
 			"args": [
 				"-g3",
 				"-Wextra",
@@ -60,7 +60,32 @@
 				"-Werror",
 				"${file}",
 				"-o",
-				"${fileDirname}/a.out"
+				"${fileDirname}/${fileBasenameNoExtension}"
+			],
+			"options": {
+				"cwd": "${workspaceRoot}"
+			},
+			"presentation": {
+				"clear": true
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
+			"type": "shell",
+			"label": "C bulid all for clang(debug)",
+			"command": "clang",
+			"args": [
+				"-g3",
+				"-Wextra",
+				"-Wall",
+				"-Werror",
+				"${fileDirname}/*.c",
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}"
 			],
 			"options": {
 				"cwd": "${workspaceRoot}"
@@ -78,26 +103,42 @@
 			"label": "norminette",
 			"command": "norminette",
 			"args": [
-				"${file}",
+				"${fileDirname}/${fileBasenameNoExtension}.c",
 			],
+			"problemMatcher": []
+		},
+		{
+			"label": "norminette ALL",
+			"command": "norminette",
+			"args": [
+				"${fileDirname}/"
+			],
+			"options": {
+				"cwd": "${workspaceRoot}"
+			},
+			"presentation": {
+				"clear": true
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
 			"problemMatcher": []
 		},
 		{
 			"type": "shell",
 			"label": "execute",
-			"command": "${fileDirname}/a.out",
+			"command": "${fileDirname}/${fileBasenameNoExtension}",
 			"group": "test",
 			"presentation": {
 				"clear": true
 			},
 			"args": [
-				"|",
 				"cat",
 				"-e",
-				"${fileDirname}/a.out",
-				// "&&",
-				// "rm",
-				// "${fileDirname}/a.out"
+				";",
+				"rm",
+				"${fileDirname}/${fileBasenameNoExtension}"
 			]
 		}
 	]

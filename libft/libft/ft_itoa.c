@@ -1,33 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/05 18:22:51 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/11 11:33:51 by sookang          ###   ########.fr       */
+/*   Created: 2021/05/11 14:42:38 by sookang           #+#    #+#             */
+/*   Updated: 2021/05/11 15:03:20 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-char	*ft_strchr(const char *s, int c)
+char *ft_itoa(int n)
 {
-	char	ch;
-	char	*str;
+	int   temp;
+	char *str;
+	int   digit;
+	char *loc;
 
-	str = (char *)s;
-	ch = (char)c;
-	while (1)
+	digit = 0;
+	temp = n;
+	if (n == 0)
+		return ft_strdup("0");
+	while (temp > 0)
 	{
-		if (*str == ch)
-		{
-			return (str);
-		}
-		if (!*str)
-			return (0);
-		str++;
+		temp /= 10;
+		digit++;
 	}
-	return (0);
+	if (!(str = (char *) malloc((digit + 1) * sizeof(char))))
+		return (NULL);
+	loc = str;
+	while (n > 0)
+	{
+		*loc = n % 10 + 48;
+		n /= 10;
+		loc++;
+	}
+	return (str);
+}
+
+int main()
+{
+	printf("%s", ft_itoa(123));
 }

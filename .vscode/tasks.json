@@ -104,7 +104,7 @@
 			"label": "norminette",
 			"command": "norminette",
 			"args": [
-				"${fileDirname}/${fileBasenameNoExtension}.c",
+				"${file}",
 			],
 			"problemMatcher": []
 		},
@@ -162,6 +162,19 @@
 				"${fileDirname}/../war-machine",
 				";",
 				"./grademe.sh",
+				"-op2"
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "TESTER",
+			"type": "shell",
+			"command": "cd",
+			"args": [
+				"${fileDirname}/../test",
+				";",
+				"./grademe.sh",
+				"-op2"
 			],
 			"problemMatcher": []
 		}

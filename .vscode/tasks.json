@@ -59,6 +59,7 @@
 				"-Wall",
 				"-Werror",
 				"${file}",
+				"I.",
 				"-o",
 				"${fileDirname}/${fileBasenameNoExtension}"
 			],
@@ -127,7 +128,7 @@
 		},
 		{
 			"type": "shell",
-			"label": "execute",
+			"label": "실행",
 			"command": "${fileDirname}/${fileBasenameNoExtension}",
 			"group": "test",
 			"presentation": {
@@ -140,6 +141,29 @@
 				"rm",
 				"${fileDirname}/${fileBasenameNoExtension}"
 			]
+		},
+		{
+			"label": "Unit-Test",
+			"type": "shell",
+			"command": "cd",
+			"args": [
+				"${fileDirname}/../unit-test",
+				";",
+				"make",
+				"f"
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "War-machine",
+			"type": "shell",
+			"command": "cd",
+			"args": [
+				"${fileDirname}/../war-machine",
+				";",
+				"./grademe.sh",
+			],
+			"problemMatcher": []
 		}
 	]
 }

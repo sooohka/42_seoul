@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 20:48:09 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/17 11:34:39 by sookang          ###   ########.fr       */
+/*   Created: 2021/05/17 15:42:30 by sookang           #+#    #+#             */
+/*   Updated: 2021/05/17 16:52:30 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strjoin(char const *s1, char const *s2)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char *str;
-	char *c1;
-	char *c2;
-	char *ans;
+	t_list *cur;
+	t_list *new;
+	t_list *head;
+	t_list *next_child;
 
-	c1 = (char *) s1;
-	c2 = (char *) s2;
-	if (!s1 || !s2)
+	if (!lst)
 		return (NULL);
-	if (!(str = (char *) malloc((ft_strlen(s1) + ft_strlen(s2) + 1))))
+	cur = lst;
+	f(cur->content);
+	if (!(new = ft_lstnew(cur->content)))
 		return (NULL);
-	ans = str;
-	while (*c1)
-		*str++ = *c1++;
-	while (*c2)
-		*str++ = *c2++;
-	*str = 0;
-	return (ans);
+	head = new;
+	next_child = head;
+	cur = cur->next;
+	while (cur)
+	{
+		if (!(new = ft_lstnew(cur->content)))
+		{
+			ft_lstclear(head, del);
+			return (NULL);
+		}
+		next_child->next = new;
+		cur = cur->next;
+	}
+	return (head);
 }

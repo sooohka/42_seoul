@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 17:39:12 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/12 17:46:29 by sookang          ###   ########.fr       */
+/*   Updated: 2021/05/17 11:49:02 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	ft_putstr_fd(char *s, int fd)
 	char *str;
 
 	str = s;
+	if (!str)
+		return ;
 	while (*str)
 		write(fd, str++, 1);
-	write(fd, 0, 1);
 }

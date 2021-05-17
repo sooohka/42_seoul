@@ -6,15 +6,15 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 12:45:18 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/12 17:25:20 by sookang          ###   ########.fr       */
+/*   Updated: 2021/05/17 11:36:47 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		front(char *s1, char *set)
+int front(char *s1, char *set)
 {
-	int		i;
+	int i;
 
 	i = 0;
 	while (s1[i])
@@ -22,7 +22,7 @@ int		front(char *s1, char *set)
 		if (ft_strchr(set, s1[i]) == 0)
 		{
 			i++;
-			break ;
+			break;
 		}
 		i++;
 	}
@@ -30,12 +30,12 @@ int		front(char *s1, char *set)
 	return (i);
 }
 
-int		rear(char *s2, char *set)
+int rear(char *s2, char *set)
 {
-	int		i;
-	int		len;
+	int i;
+	int len;
 
-	if ((len = (int)ft_strlen(s2)) == 0)
+	if ((len = (int) ft_strlen(s2)) == 0)
 		return (0);
 	i = len - 1;
 	while (i >= 0)
@@ -43,7 +43,7 @@ int		rear(char *s2, char *set)
 		if (!ft_strchr(set, s2[i]))
 		{
 			i--;
-			break ;
+			break;
 		}
 		i--;
 	}
@@ -51,7 +51,7 @@ int		rear(char *s2, char *set)
 	return (i);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char *ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
 	char	*c1;
@@ -60,14 +60,16 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		last;
 
 	i = 0;
-	c1 = (char *)s1;
+	if (!s1 || !set)
+		return (NULL);
+	c1 = (char *) s1;
 	if (ft_strlen(c1) == 0)
 		return (c1);
-	first = front(c1, (char *)set);
-	last = rear(c1, (char *)set);
+	first = front(c1, (char *) set);
+	last = rear(c1, (char *) set);
 	if (first >= last)
 		return (ft_strdup(""));
-	if (!(str = (char *)malloc((last - first + 1 + 1) * sizeof(char))))
+	if (!(str = (char *) malloc((last - first + 1 + 1) * sizeof(char))))
 		return (NULL);
 	while (ft_strchr(set, *c1))
 		c1++;

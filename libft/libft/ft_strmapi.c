@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 17:03:23 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/12 17:20:29 by sookang          ###   ########.fr       */
+/*   Updated: 2021/05/17 11:45:46 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	int		i;
 	int		j;
 
+	if (!s)
+		return (NULL);
 	j = 0;
 	i = (int)ft_strlen(s);
 	if (!(str = (char *)malloc((i + 1) * sizeof(char))))

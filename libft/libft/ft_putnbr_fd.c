@@ -6,34 +6,33 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 17:51:32 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/12 18:04:06 by sookang          ###   ########.fr       */
+/*   Updated: 2021/05/17 14:10:07 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+static void rec(int n, int fd)
 {
-	char	str[10];
-	int		i;
-	int		is_negative;
+	char c;
 
-	is_negative = 0;
-	if (n < 0)
-		is_negative = 1;
-	else if (n == 0)
-		write(1, "0", fd);
-	i = -1;
-	while (n != 0)
+	if (n != 0)
 	{
-		if (n > 0)
-			str[++i] = ((n % 10) + '0');
-		else
-			str[++i] = (-(n % 10) + '0');
-		n /= 10;
+		rec(n / 10, fd);
+		c = n % 10 + 48;
+		write(fd, &c, 1);
 	}
-	if (is_negative)
-		write(1, "-", fd);
-	while (i >= 0)
-		write(1, &str[i--], fd);
+}
+
+void ft_putnbr_fd(int n, int fd)
+{
+	if (n == INT32_MIN)
+		write(fd, "-2147483648", 11);
+	else if (n < 1)
+	{
+		write(fd, "-", 1);
+		n *= -1;
+	}
+	else
+		rec(n, fd);
 }

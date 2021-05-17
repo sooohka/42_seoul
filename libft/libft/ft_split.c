@@ -6,16 +6,16 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 13:28:34 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/17 14:41:21 by sookang          ###   ########.fr       */
+/*   Updated: 2021/05/17 17:25:32 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int get_strs_length(char *str, char c)
+static int		get_strs_length(char *str, char c)
 {
-	int count;
-	int i;
+	int		count;
+	int		i;
 
 	i = 0;
 	count = 0;
@@ -32,7 +32,7 @@ static int get_strs_length(char *str, char c)
 	return (count + 1);
 }
 
-static void assign_str(char **strs, char *str, char c, int total_len)
+static void		assign_str(char **strs, char *str, char c, int total_len)
 {
 	int i;
 	int j;
@@ -46,7 +46,7 @@ static void assign_str(char **strs, char *str, char c, int total_len)
 		j = 0;
 		while (!(str[j] == c) && str[j])
 			j++;
-		strs[i] = (char *) malloc(sizeof(char) * (j + 1));
+		strs[i] = (char *)malloc(sizeof(char) * (j + 1));
 		k = 0;
 		while (k < j)
 			strs[i][k++] = *(str++);
@@ -56,17 +56,17 @@ static void assign_str(char **strs, char *str, char c, int total_len)
 	strs[i] = 0;
 }
 
-char **ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
-	int    total_len;
-	char * str;
-	char **strs;
+	int			total_len;
+	char		*str;
+	char		**strs;
 
 	if (!s)
 		return (NULL);
 	str = (char*)s;
 	total_len = get_strs_length(str, c);
-	if (!(strs = (char **) malloc(sizeof(char *) * (total_len + 1))))
+	if (!(strs = (char **)malloc(sizeof(char *) * (total_len + 1))))
 		return (NULL);
 	assign_str(strs, str, c, total_len);
 	return (strs);

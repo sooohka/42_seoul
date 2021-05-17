@@ -6,13 +6,13 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 17:51:32 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/17 14:10:07 by sookang          ###   ########.fr       */
+/*   Updated: 2021/05/17 17:06:59 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void rec(int n, int fd)
+static void		rec(int n, int fd)
 {
 	char c;
 
@@ -24,7 +24,7 @@ static void rec(int n, int fd)
 	}
 }
 
-void ft_putnbr_fd(int n, int fd)
+void			ft_putnbr_fd(int n, int fd)
 {
 	if (n == INT32_MIN)
 		write(fd, "-2147483648", 11);

@@ -6,16 +6,16 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 15:31:11 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/17 15:35:48 by sookang          ###   ########.fr       */
+/*   Updated: 2021/05/17 17:05:58 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list *cur;
-	t_list *next;
+	t_list	*cur;
+	t_list	*next;
 
 	cur = *lst;
 	if (!cur)

@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 18:28:26 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/17 11:42:32 by sookang          ###   ########.fr       */
+/*   Updated: 2021/05/17 18:29:57 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ char	*ft_strrchr(const char *s, int c)
 	unsigned int	len;
 
 	str = (char *)s;
-	// if (*str == NULL)
-	// 	return (NULL);
 	len = ft_strlen(s);
 	if (len == 0)
+	{
+		if (c == 0)
+			return (str);
 		return (NULL);
+	}
 	str += len - 1;
 	ch = c;
 	if (ch == '\0')

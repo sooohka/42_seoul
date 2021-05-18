@@ -177,6 +177,18 @@
 				"-op2"
 			],
 			"problemMatcher": []
-		}
+		},
+		{
+			"label": "tripo",
+			"type": "shell",
+			"command": "cd",
+			"args": [
+				"${fileDirname}/../tripo",
+				";",
+				"make",
+				"a"
+			],
+			"problemMatcher": []
+		},
 	]
 }

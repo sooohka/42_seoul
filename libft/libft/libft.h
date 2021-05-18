@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 18:19:19 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/18 15:35:20 by sookang          ###   ########.fr       */
+/*   Updated: 2021/05/18 16:00:55 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-int				ft_atoi(char *str);
+int				ft_atoi(const char *str);
 unsigned int	ft_strlen(const char *s);
 void			*ft_bzero(void *s, unsigned int len);
 int				ft_isalnum(int c);

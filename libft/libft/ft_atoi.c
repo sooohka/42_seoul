@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:23:32 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/12 17:00:44 by sookang          ###   ########.fr       */
+/*   Updated: 2021/05/18 16:00:14 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int		is_space(char c)
 	return (0);
 }
 
-int				ft_atoi(char *str)
+int				ft_atoi(const char *str)
 {
 	int i;
 	int num;

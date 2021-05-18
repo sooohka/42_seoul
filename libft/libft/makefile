@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: sookang <sookang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/05 15:27:20 by sookang           #+#    #+#              #
-#    Updated: 2021/05/18 15:56:59 by sookang          ###   ########.fr        #
+#    Updated: 2021/05/18 17:47:19 by sookang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ CFlAGS	= -Werror -Wall -Wextra
 
 RM		= rm -f
 
-# FILES=	$(basename $(notdir $(wildcard ./*.c)))
 FILES=	ft_isalnum\
 		ft_isprint\
 		ft_memcmp\
@@ -68,11 +67,6 @@ BONUS_OBJS=$(addprefix ./,$(addsuffix .o, $(BONUS_FILES)))
 NAME = libft.a
 
 all	:	$(NAME)
-
-echo:
-	@echo FILE: $(FILES)
-	@echo SRCS: $(SRCS)
-	@echo OBJS: $(OBJS)
 
 $(NAME): $(OBJS)
 	ar rc $@ $^

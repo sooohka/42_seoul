@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 17:40:43 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/17 17:06:10 by sookang          ###   ########.fr       */
+/*   Updated: 2021/05/19 10:43:49 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,4 @@ void	ft_putendl_fd(char *s, int fd)
 	while (*str)
 		write(fd, str++, 1);
 	write(fd, "\n", 1);
-	write(fd, 0, 1);
 }

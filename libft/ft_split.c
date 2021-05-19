@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 13:28:34 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/18 15:37:47 by sookang          ###   ########.fr       */
+/*   Updated: 2021/05/19 12:23:18 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ static void		assign_str(char **strs, char *str, char c, int total_len)
 		j = 0;
 		while (!(str[j] == c) && str[j])
 			j++;
-		strs[i] = (char *)malloc(sizeof(char) * (j + 1));
+		if (!(strs[i] = (char *)malloc(sizeof(char) * (j + 1))))
+			return (NULL);
 		k = 0;
 		while (k < j)
 			strs[i][k++] = *(str++);

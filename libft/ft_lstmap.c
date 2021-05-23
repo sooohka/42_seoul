@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 15:42:30 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/18 17:02:49 by sookang          ###   ########.fr       */
+/*   Updated: 2021/05/23 19:51:20 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*cur;
-	t_list	*new;
 	t_list	*head;
 	t_list	*front;
 	t_list	*next_child;

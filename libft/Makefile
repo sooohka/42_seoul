@@ -6,13 +6,13 @@
 #    By: sookang <sookang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/05 15:27:20 by sookang           #+#    #+#              #
-#    Updated: 2021/05/18 17:47:19 by sookang          ###   ########.fr        #
+#    Updated: 2021/05/23 20:13:58 by sookang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC		= gcc
-CFlAGS	= -Werror -Wall -Wextra
+CFLAGS	= -Werror -Wall -Wextra
 
 RM		= rm -f
 
@@ -72,7 +72,7 @@ $(NAME): $(OBJS)
 	ar rc $@ $^
 
 %.o:	%.c %.h
-	$(CC) $(CFlAGS) -c $@ $^
+	$(CC) $(CFLAGS) -c $@ $^
 
 re: fclean all
 

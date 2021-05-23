@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 13:28:34 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/19 12:23:18 by sookang          ###   ########.fr       */
+/*   Updated: 2021/05/23 20:21:20 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,21 @@ static int		get_strs_length(char *str, char c)
 	return (count + 1);
 }
 
-static void		assign_str(char **strs, char *str, char c, int total_len)
+static char		**free_strs(char **strs)
+{
+	int		i;
+
+	i = 0;
+	while (strs[i])
+	{
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
+	return (NULL);
+}
+
+static char		**assign_str(char **strs, char *str, char c, int total_len)
 {
 	int i;
 	int j;
@@ -47,7 +61,7 @@ static void		assign_str(char **strs, char *str, char c, int total_len)
 		while (!(str[j] == c) && str[j])
 			j++;
 		if (!(strs[i] = (char *)malloc(sizeof(char) * (j + 1))))
-			return (NULL);
+			return (free_strs(strs));
 		k = 0;
 		while (k < j)
 			strs[i][k++] = *(str++);
@@ -55,6 +69,7 @@ static void		assign_str(char **strs, char *str, char c, int total_len)
 		i++;
 	}
 	strs[i] = 0;
+	return (strs);
 }
 
 char			**ft_split(char const *s, char c)

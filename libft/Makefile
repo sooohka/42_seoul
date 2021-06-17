@@ -6,7 +6,7 @@
 #    By: sookang <sookang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/05 15:27:20 by sookang           #+#    #+#              #
-#    Updated: 2021/05/23 20:13:58 by sookang          ###   ########.fr        #
+#    Updated: 2021/06/17 16:16:16 by sookang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC		= gcc
 CFLAGS	= -Werror -Wall -Wextra
 
 RM		= rm -f
-
+AR		=ar rc
 FILES=	ft_isalnum\
 		ft_isprint\
 		ft_memcmp\
@@ -69,15 +69,15 @@ NAME = libft.a
 all	:	$(NAME)
 
 $(NAME): $(OBJS)
-	ar rc $@ $^
+	$(AR) $@ $^
 
 %.o:	%.c %.h
 	$(CC) $(CFLAGS) -c $@ $^
 
 re: fclean all
 
-bonus:	$(BONUS_OBJS) $(OBJS)
-	ar rc $(NAME) $^
+bonus:	$(OBJS) $(BONUS_OBJS)
+		$(AR) $(NAME) $^
 
 clean:
 	$(RM) $(addsuffix .o,$(FILES))

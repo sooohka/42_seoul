@@ -1,204 +1,39 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "shell",
-			"label": "C파일 하나",
-			"command": "clang",
-			"args": [
-				"-Wextra",
-				"-Wall",
-				"-Werror",
-				"${file}",
-				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}"
-			],
-			"options": {
-				"cwd": "${workspaceRoot}"
-			},
-			"presentation": {
-				"clear": true
-			},
-			"group": "build",
-			"problemMatcher": []
-		},
-		{
-			"type": "shell",
-			"label": "C파일 전부",
-			"command": "clang",
-			"args": [
-				"-Wextra",
-				"-Wall",
-				"-Werror",
-				"${fileDirname}/*.c",
-				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}"
-			],
-			"options": {
-				"cwd": "${workspaceRoot}"
-			},
-			"presentation": {
-				"clear": true
-			},
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"problemMatcher": []
-		},
-		{
-			"type": "shell",
-			"label": "C bulid for clang(debug)",
-			"command": "clang",
-			"args": [
-				"-g3",
-				"-Wextra",
-				"-Wall",
-				"-Werror",
-				"${file}",
-				"I.",
-				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}"
-			],
-			"options": {
-				"cwd": "${workspaceRoot}"
-			},
-			"presentation": {
-				"clear": true
-			},
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"problemMatcher": []
-		},
-		{
-			"type": "shell",
-			"label": "C bulid all for clang(debug)",
-			"command": "clang",
-			"args": [
-				"-g3",
-				"-Wextra",
-				"-Wall",
-				"-Werror",
-				"${fileDirname}/*.c",
-				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}"
-			],
-			"options": {
-				"cwd": "${workspaceRoot}"
-			},
-			"presentation": {
-				"clear": true
-			},
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"problemMatcher": []
-		},
-		{
-			"label": "norminette",
-			"command": "norminette",
-			"args": [
-				"${file}"
-			],
-			"problemMatcher": []
-		},
-		{
-			"label": "norminette ALL",
-			"command": "norminette",
-			"args": [
-				"${fileDirname}/"
-			],
-			"options": {
-				"cwd": "${workspaceRoot}"
-			},
-			"presentation": {
-				"clear": true
-			},
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"problemMatcher": []
-		},
-		{
-			"type": "shell",
-			"label": "실행",
-			"command": "${fileDirname}/${fileBasenameNoExtension}",
-			"group": "test",
-			"presentation": {
-				"clear": true
-			},
-			"args": [
-				"cat",
-				"-e",
-				";",
-				"rm",
-				"${fileDirname}/${fileBasenameNoExtension}"
-			]
-		},
-		{
-			"label": "Unit-Test",
-			"type": "shell",
-			"command": "cd",
-			"args": [
-				"${fileDirname}/../unit-test",
-				";",
-				"make",
-				"f"
-			],
-			"problemMatcher": []
-		},
-		{
-			"label": "War-machine",
-			"type": "shell",
-			"command": "cd",
-			"args": [
-				"${fileDirname}/../war-machine",
-				";",
-				"./grademe.sh",
-				"-op2"
-			],
-			"problemMatcher": [],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
-		},
-		{
-			"label": "TESTER",
-			"type": "shell",
-			"command": "cd",
-			"args": [
-				"${fileDirname}/../test",
-				";",
-				"./grademe.sh",
-				"-op2"
-			],
-			"problemMatcher": []
-		},
-		{
-			"label": "tripo",
-			"type": "shell",
-			"command": "cd",
-			"args": [
-				"${fileDirname}/../tripo",
-				";",
-				"make",
-				"a"
-			],
-			"problemMatcher": []
-		},
-		{
-			"label": "python3",
-			"type": "shell",
-			"command": "python3",
-			"args": [
-				"${file}"
-			],
-			"problemMatcher": []
-		}
-	]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "C파일 하나",
+            "command": "clang",
+            "args": ["-Wextra", "-Wall", "-Werror", "${file}", "-o", "${fileDirname}/${fileBasenameNoExtension}"],
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "presentation": {
+                "clear": true
+            },
+            "group": "build",
+        },
+        {
+            "type": "shell",
+            "label": "C파일 전부",
+            "command": "clang",
+            "args": ["-Wextra", "-Wall", "-Werror", "${fileDirname}/*.c", "-o", "${fileDirname}/a.out"],
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "presentation": {
+                "clear": true
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        },
+        {
+            "label": "norminette",
+            "command": "norminette",
+            "args": ["${file}"],
+        }
+    ]
 }

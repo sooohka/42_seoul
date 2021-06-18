@@ -3,6 +3,32 @@
     "tasks": [
         {
             "type": "shell",
+            "label": "gnl",
+            "command": "cd",
+            "args": [
+                "${fileDirname}",
+                "&&",
+                "gcc",
+                "-g3",
+                // "-D BUFFER_SIZE=32",
+                "-Wextra",
+                "-Wall",
+                "-Werror",
+                "*.c",
+                "&&",
+                "./a.out"
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "presentation": {
+                "clear": true
+            },
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
             "label": "C파일 하나",
             "command": "clang",
             "args": ["-Wextra", "-Wall", "-Werror", "${file}", "-o", "${fileDirname}/${fileBasenameNoExtension}"],
@@ -12,7 +38,7 @@
             "presentation": {
                 "clear": true
             },
-            "group": "build",
+            "group": "build"
         },
         {
             "type": "shell",
@@ -28,12 +54,12 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            },
+            }
         },
         {
             "label": "norminette",
             "command": "norminette",
-            "args": ["${file}"],
+            "args": ["${file}"]
         }
     ]
 }

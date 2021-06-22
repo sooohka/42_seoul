@@ -9,5 +9,7 @@ all:$(NAME)
 
 $(NAME):$(SRCS) main.c
 		$(CC) $(CFLAGS) $^ -o $(NAME)
+clean:
+	rm -rf gnlTester/ 42TESTERS-GNL/ gnlkiller/ 42cursus_gnl_tests/ gnl-war-machine-v2019/ GNL_lover a.out 
 		
 .PHONY: all clean fclean re bonus

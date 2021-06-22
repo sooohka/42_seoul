@@ -18,6 +18,8 @@ int checkLine(char *str)
 	int i;
 
 	i = 0;
+	if (!str)
+		return (-1);
 	while (str[i])
 	{
 		if (str[i] == '\n')
@@ -33,6 +35,8 @@ char *ft_cutter(char *src, int len)
 	int   i;
 
 	i = 0;
+	// if (len == 0)
+	// 	return ft_strdup("");
 	if (!(str = (char *) malloc(sizeof(char) * (len))))
 		return (NULL);
 	while (i < len)
@@ -52,14 +56,13 @@ int get_next_line(int fd, char **line)
 	int          readed;
 	char *       temp;
 
-	if (!line || fd < 3)
+	if (!line || fd < 0||fd>OPEN_MAX)
 		return (-1);
 	while ((readed = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
 		if (readed == -1)
 			return (-1);
 		buffer[readed] = 0;
-		//전에있던 값과 현재 읽은값 이어붙임 free해야댐
 		if (!cache)
 			cache = ft_strdup(buffer);
 		else
@@ -77,7 +80,17 @@ int get_next_line(int fd, char **line)
 		// 줄바꿈 문자가 len위치에 나왔다는것임
 		// 버퍼 사이즈만큼 읽었을시
 	}
-	if (cache)
+	if ((len = checkLine(cache)) >= 0)
+	{
+		//줄바꿈이 나온 자리가 len
+		*line = ft_cutter(cache, len);
+		temp = ft_strdup(&cache[len + 1]);
+		free(cache);
+		cache = temp;
+		// printf("cache2:%s\n", cache);
+		return (1);
+	}
+	else if (cache)
 		*line = cache;
 	else
 		*line = ft_strdup("");

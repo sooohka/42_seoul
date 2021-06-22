@@ -10,7 +10,7 @@
                 "&&",
                 "gcc",
                 "-g3",
-                // "-D BUFFER_SIZE=32",
+                "-D BUFFER_SIZE=32",
                 "-Wextra",
                 "-Wall",
                 "-Werror",

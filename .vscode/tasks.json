@@ -31,7 +31,14 @@
             "type": "shell",
             "label": "C파일 하나",
             "command": "clang",
-            "args": ["-Wextra", "-Wall", "-Werror", "${file}", "-o", "${fileDirname}/${fileBasenameNoExtension}"],
+            "args": [
+                "-Wextra",
+                "-Wall",
+                "-Werror",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
             "options": {
                 "cwd": "${workspaceRoot}"
             },
@@ -44,7 +51,14 @@
             "type": "shell",
             "label": "C파일 전부",
             "command": "clang",
-            "args": ["-Wextra", "-Wall", "-Werror", "${fileDirname}/*.c", "-o", "${fileDirname}/a.out"],
+            "args": [
+                "-Wextra",
+                "-Wall",
+                "-Werror",
+                "${fileDirname}/*.c",
+                "-o",
+                "${fileDirname}/a.out"
+            ],
             "options": {
                 "cwd": "${workspaceRoot}"
             },
@@ -59,7 +73,10 @@
         {
             "label": "norminette",
             "command": "norminette",
-            "args": ["${file}"]
+            "args": [
+                "${file}"
+            ],
+            "problemMatcher": []
         }
     ]
 }

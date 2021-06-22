@@ -33,7 +33,7 @@ char *ft_cutter(char *src, int len)
 	int   i;
 
 	i = 0;
-	if (!(str = (char *) malloc(sizeof(char) * (len))))
+	if (!(str = (char *) malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	while (i < len)
 	{
@@ -60,8 +60,8 @@ int returner(char **cache, char **line)
 	}
 	else if (*cache)
 	{
-		*line = ft_strdup(*cache);
-		free(*cache);
+		*line = *cache;
+		*cache = 0;
 	}
 	else
 		*line = ft_strdup("");
@@ -75,7 +75,6 @@ int get_next_line(int fd, char **line)
 	int          len;
 	int          readed;
 	char *       temp;
-
 	if (!line || fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
 		return (-1);
 	while ((readed = read(fd, buffer, BUFFER_SIZE)) > 0)
@@ -84,7 +83,7 @@ int get_next_line(int fd, char **line)
 			return (-1);
 		buffer[readed] = 0;
 		if (!cache)
-			cache = ft_strjoin("", buffer);
+			cache = ft_strdup(buffer);
 		else
 			cache = ft_strjoin(cache, buffer);
 		if ((len = checkLine(cache)) >= 0)

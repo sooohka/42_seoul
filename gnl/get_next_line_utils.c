@@ -1,12 +1,12 @@
 #include "get_next_line.h"
 
-unsigned int	ft_strlen(const char *s)
+unsigned int ft_strlen(const char *s)
 {
-	unsigned char	*str;
-	unsigned int	i;
+	unsigned char *str;
+	unsigned int   i;
 
 	i = 0;
-	str = (unsigned char*)s;
+	str = (unsigned char *) s;
 	while (*str != 0)
 	{
 		str++;
@@ -15,14 +15,13 @@ unsigned int	ft_strlen(const char *s)
 	return (i);
 }
 
-
-char			*ft_strdup(const char *s1)
+char *ft_strdup(const char *s1)
 {
-	char	*str;
-	int		i;
+	char *str;
+	int   i;
 
 	i = 0;
-	if (!(str = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char))))
+	if (!(str = (char *) malloc((ft_strlen(s1) + 1) * sizeof(char))))
 		return (NULL);
 	while (s1[i])
 	{
@@ -33,32 +32,33 @@ char			*ft_strdup(const char *s1)
 	return (str);
 }
 
-char			*ft_strjoin(char const *s1, char const *s2)
+char *ft_strjoin(char *s1, char const *s2)
 {
 	char *str;
 	char *c1;
 	char *c2;
 	char *ans;
 
-	c1 = (char *)s1;
-	c2 = (char *)s2;
+	c1 = (char *) s1;
+	c2 = (char *) s2;
 	if (!s1 || !s2)
 		return (NULL);
-	if (!(str = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1))))
+	if (!(str = (char *) malloc((ft_strlen(s1) + ft_strlen(s2) + 1))))
 		return (NULL);
 	ans = str;
 	while (*c1)
 		*str++ = *c1++;
 	while (*c2)
 		*str++ = *c2++;
+	free(s1);
 	*str = 0;
 	return (ans);
 }
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+unsigned int ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	unsigned int	i;
-	unsigned int	len;
+	unsigned int i;
+	unsigned int len;
 
 	i = 0;
 	if (!src)
@@ -75,11 +75,11 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	return (len);
 }
 
-unsigned int		ft_strlcat(char *dest, char *src, unsigned int size)
+unsigned int ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	unsigned int	dest_len;
-	unsigned int	src_len;
-	unsigned int	i;
+	unsigned int dest_len;
+	unsigned int src_len;
+	unsigned int i;
 
 	i = 0;
 	dest_len = ft_strlen(dest);

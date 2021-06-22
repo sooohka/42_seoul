@@ -21,7 +21,7 @@ cp get_next_line.c gnlkiller/
 cp get_next_line.h gnlkiller/
 cp get_next_line_utils.c gnlkiller/
 cd gnlkiller/
-bash run.sh
+zsh run.sh
 cd ..
 
 echo -e "\033[32;1m"42TESTERS-GNL"\033[m"

@@ -10,8 +10,6 @@
 // -1 : An error happened
 
 #include "get_next_line.h"
-//나중에 요기 지우자
-// \n위치 반환, 널반환하면 없는것
 
 int checkLine(char *str)
 {
@@ -35,8 +33,6 @@ char *ft_cutter(char *src, int len)
 	int   i;
 
 	i = 0;
-	// if (len == 0)
-	// 	return ft_strdup("");
 	if (!(str = (char *) malloc(sizeof(char) * (len))))
 		return (NULL);
 	while (i < len)
@@ -48,6 +44,30 @@ char *ft_cutter(char *src, int len)
 	return (str);
 }
 
+int returner(char **cache, char **line)
+{
+	int   len;
+	char *temp;
+
+	if ((len = checkLine(*cache)) >= 0)
+	{
+		//줄바꿈이 나온 자리가 len
+		*line = ft_cutter(*cache, len);
+		temp = ft_strdup(*cache + len + 1);
+		free(*cache);
+		*cache = temp;
+		return (1);
+	}
+	else if (*cache)
+	{
+		*line = ft_strdup(*cache);
+		free(*cache);
+	}
+	else
+		*line = ft_strdup("");
+	return (0);
+}
+
 int get_next_line(int fd, char **line)
 {
 	char         buffer[BUFFER_SIZE + 1];
@@ -56,7 +76,7 @@ int get_next_line(int fd, char **line)
 	int          readed;
 	char *       temp;
 
-	if (!line || fd < 0||fd>OPEN_MAX)
+	if (!line || fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
 		return (-1);
 	while ((readed = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
@@ -64,7 +84,7 @@ int get_next_line(int fd, char **line)
 			return (-1);
 		buffer[readed] = 0;
 		if (!cache)
-			cache = ft_strdup(buffer);
+			cache = ft_strjoin("", buffer);
 		else
 			cache = ft_strjoin(cache, buffer);
 		if ((len = checkLine(cache)) >= 0)
@@ -74,28 +94,14 @@ int get_next_line(int fd, char **line)
 			temp = ft_strdup(&cache[len + 1]);
 			free(cache);
 			cache = temp;
-			// printf("cache:%s\n", cache);
 			return (1);
 		}
 		// 줄바꿈 문자가 len위치에 나왔다는것임
 		// 버퍼 사이즈만큼 읽었을시
 	}
-	if ((len = checkLine(cache)) >= 0)
-	{
-		//줄바꿈이 나온 자리가 len
-		*line = ft_cutter(cache, len);
-		temp = ft_strdup(&cache[len + 1]);
-		free(cache);
-		cache = temp;
-		// printf("cache2:%s\n", cache);
-		return (1);
-	}
-	else if (cache)
-		*line = cache;
-	else
-		*line = ft_strdup("");
-	return (0);
+	return returner(&cache, line);
 }
+
 // 1. 파일읽는다.
 // 2. 읽은 파일을 buffer에 저장한다.
 // 3. buffer에 있는 값 중 줄바꿈 문자를 찾는다.

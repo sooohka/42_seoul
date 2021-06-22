@@ -1,4 +1,3 @@
-#include <limits.h> //OPEN_MAX 선언 10240
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -10,3 +9,4 @@ unsigned int ft_strlcpy(char *dest, char *src, unsigned int size);
 unsigned int ft_strlcat(char *dest, char *src, unsigned int size);
 
 int get_next_line(int fd, char **line);
+#define OPEN_MAX 256

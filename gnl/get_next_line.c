@@ -11,7 +11,6 @@
 
 #include "get_next_line.h"
 //나중에 요기 지우자
-// #define BUFFER_SIZE 32
 // \n위치 반환, 널반환하면 없는것
 
 int checkLine(char *str)
@@ -22,13 +21,10 @@ int checkLine(char *str)
 	while (str[i])
 	{
 		if (str[i] == '\n')
-		{
-			i++;
 			return (i);
-		}
 		i++;
 	}
-	return (0);
+	return (-1);
 }
 
 char *ft_cutter(char *src, int len)
@@ -37,7 +33,7 @@ char *ft_cutter(char *src, int len)
 	int   i;
 
 	i = 0;
-	if (!(str = (char *) malloc(sizeof(char) * (len + 1))))
+	if (!(str = (char *) malloc(sizeof(char) * (len))))
 		return (NULL);
 	while (i < len)
 	{
@@ -50,40 +46,41 @@ char *ft_cutter(char *src, int len)
 
 int get_next_line(int fd, char **line)
 {
-	char *       buffer;
+	char         buffer[BUFFER_SIZE + 1];
 	static char *cache;
 	int          len;
+	int          readed;
+	char *       temp;
 
-	len = 0;
 	if (!line || fd < 3)
 		return (-1);
-	while (1)
+	while ((readed = read(fd, buffer, BUFFER_SIZE)) > 0)
 	{
-		if (!(buffer = (char *) malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+		if (readed == -1)
 			return (-1);
-		if ((read(fd, buffer, BUFFER_SIZE) == -1))
-			break;
-		buffer[ft_strlen(buffer)] = 0;
+		buffer[readed] = 0;
 		//전에있던 값과 현재 읽은값 이어붙임 free해야댐
 		if (!cache)
-			cache = ft_strjoin("", buffer);
+			cache = ft_strdup(buffer);
 		else
 			cache = ft_strjoin(cache, buffer);
-		// 줄바꿈 문자가 len위치에 나왔다는것임
-		free(buffer);
-		if ((len = checkLine(cache)) > 0)
+		if ((len = checkLine(cache)) >= 0)
 		{
+			//줄바꿈이 나온 자리가 len
 			*line = ft_cutter(cache, len);
-			cache = &cache[len];
+			temp = ft_strdup(&cache[len + 1]);
+			free(cache);
+			cache = temp;
+			// printf("cache:%s\n", cache);
 			return (1);
 		}
-		else
-		{
-			*line = cache;
-			return (0);
-		}
+		// 줄바꿈 문자가 len위치에 나왔다는것임
+		// 버퍼 사이즈만큼 읽었을시
 	}
-	free(buffer);
+	if (cache)
+		*line = cache;
+	else
+		*line = ft_strdup("");
 	return (0);
 }
 // 1. 파일읽는다.

@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 15:17:54 by sookang           #+#    #+#             */
-/*   Updated: 2021/07/24 20:27:51 by sookang          ###   ########.fr       */
+/*   Updated: 2021/07/24 21:18:49 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char		*ft_cutter(char *src, int len)
 	i = 0;
 	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	while (i < len)
+	while (i <= len)
 	{
 		str[i] = src[i];
 		i++;

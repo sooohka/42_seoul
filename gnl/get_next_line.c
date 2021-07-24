@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 15:17:54 by sookang           #+#    #+#             */
-/*   Updated: 2021/06/22 15:30:40 by sookang          ###   ########.fr       */
+/*   Updated: 2021/07/24 20:27:51 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,53 +45,53 @@ char		*ft_cutter(char *src, int len)
 	return (str);
 }
 
-int			returner(char **cache, char **line)
+char*			returner(char **cache)
 {
 	int		len;
 	char	*temp;
+	char *ans;
 
 	if ((len = check_line(*cache)) >= 0)
 	{
-		*line = ft_cutter(*cache, len);
+		ans = ft_cutter(*cache, len);
 		temp = ft_strdup(*cache + len + 1);
 		free(*cache);
 		*cache = temp;
-		return (1);
+		return (ans);
 	}
 	else if (*cache)
 	{
-		*line = *cache;
+		ans = *cache;
 		*cache = 0;
+		return (ans);
 	}
-	else
-		*line = ft_strdup("");
-	return (0);
+	return (NULL);
 }
 
-int			get_next_line(int fd, char **line)
+char*			get_next_line(int fd)
 {
 	char		buffer[BUFFER_SIZE + 1];
 	static char	*cache;
 	int			len;
 	int			readed;
 	char		*temp;
-
-	if (!line || fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
-		return (-1);
+	char *ans;
+	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
+		return (NULL);
 	while ((readed = read(fd, buffer, BUFFER_SIZE)))
 	{
 		if (readed == -1)
-			return (-1);
+			return (NULL);
 		buffer[readed] = 0;
 		cache = !cache ? ft_strdup(buffer) : ft_strjoin(cache, buffer);
 		if ((len = check_line(cache)) >= 0)
 		{
-			*line = ft_cutter(cache, len);
+			ans = ft_cutter(cache, len);
 			temp = ft_strdup(&cache[len + 1]);
 			free(cache);
 			cache = temp;
-			return (1);
+			return (ans);
 		}
 	}
-	return (returner(&cache, line));
+	return (returner(&cache));
 }

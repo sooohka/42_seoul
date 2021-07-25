@@ -6,13 +6,13 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 15:28:39 by sookang           #+#    #+#             */
-/*   Updated: 2021/07/24 21:36:10 by sookang          ###   ########.fr       */
+/*   Updated: 2021/07/25 16:04:43 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-unsigned int			ft_strlen(const char *s)
+unsigned int	ft_strlen(const char *s)
 {
 	unsigned char	*str;
 	unsigned int	i;
@@ -27,13 +27,14 @@ unsigned int			ft_strlen(const char *s)
 	return (i);
 }
 
-char					*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
 	char	*str;
 	int		i;
 
 	i = 0;
-	if (!(str = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char))))
+	str = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char));
+	if (!str)
 		return (NULL);
 	while (s1[i])
 	{
@@ -44,18 +45,19 @@ char					*ft_strdup(const char *s1)
 	return (str);
 }
 
-char					*ft_strjoin(char *s1, char const *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 {
-	char *str;
-	char *c1;
-	char *c2;
-	char *ans;
+	char	*str;
+	char	*c1;
+	char	*c2;
+	char	*ans;
 
 	c1 = (char *)s1;
 	c2 = (char *)s2;
 	if (!s1 && !s2)
 		return (NULL);
-	if (!(str = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1))))
+	str = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!str)
 		return (NULL);
 	ans = str;
 	while (*c1)
@@ -65,4 +67,20 @@ char					*ft_strjoin(char *s1, char const *s2)
 	free(s1);
 	*str = 0;
 	return (ans);
+}
+
+int	check_line(char *str)
+{
+	int		i;
+
+	i = 0;
+	if (!str)
+		return (-1);
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			return (i);
+		i++;
+	}
+	return (-1);
 }

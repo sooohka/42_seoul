@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 15:17:54 by sookang           #+#    #+#             */
-/*   Updated: 2021/06/22 15:31:27 by sookang          ###   ########.fr       */
+/*   Updated: 2021/07/25 14:59:45 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,54 +45,58 @@ char		*ft_cutter(char *src, int len)
 	return (str);
 }
 
-int			returner(char **cache, char **line)
+char*			returner(char **cache)
 {
 	int		len;
 	char	*temp;
+	char *ans;
 
 	if ((len = check_line(*cache)) >= 0)
 	{
-		*line = ft_cutter(*cache, len);
+		ans = ft_cutter(*cache, len + 1);
 		temp = ft_strdup(*cache + len + 1);
 		free(*cache);
 		*cache = temp;
-		return (1);
+		return (ans);
 	}
 	else if (*cache)
 	{
-		*line = *cache;
+		ans = *cache;
 		*cache = 0;
+		if(ft_strlen(ans)==0){
+			free(ans);
+			return(NULL);
+		}
+		
+		return (ans);
 	}
-	else
-		*line = ft_strdup("");
-	return (0);
+	return (NULL);
 }
 
-int			get_next_line(int fd, char **line)
+char*			get_next_line(int fd)
 {
 	char		buffer[BUFFER_SIZE + 1];
 	static char	*cache[OPEN_MAX];
 	int			len;
 	int			readed;
 	char		*temp;
-
-	if (!line || fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
-		return (-1);
+	char *ans;
+	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
+		return (NULL);
 	while ((readed = read(fd, buffer, BUFFER_SIZE)))
 	{
 		if (readed == -1)
-			return (-1);
+			return (NULL);
 		buffer[readed] = 0;
-		cache[fd] = !cache[fd] ? ft_strdup(buffer) :
-		ft_strjoin(cache[fd], buffer);
+		cache[fd] = !cache[fd] ? ft_strdup(buffer) : ft_strjoin(cache[fd], buffer);
 		if ((len = check_line(cache[fd])) >= 0)
 		{
-			*line = ft_cutter(cache[fd], len);
+			ans = ft_cutter(cache[fd], len + 1);
 			temp = ft_strdup(&cache[fd][len + 1]);
 			free(cache[fd]);
 			cache[fd] = temp;
-			return (1);
+			return (ans);
 		}
 	}
-	return (returner(&cache[fd], line));
+	return (returner(&cache[fd]));
 }

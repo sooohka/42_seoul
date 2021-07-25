@@ -6,13 +6,13 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 15:17:54 by sookang           #+#    #+#             */
-/*   Updated: 2021/07/24 21:18:49 by sookang          ###   ########.fr       */
+/*   Updated: 2021/07/25 15:04:19 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int			check_line(char *str)
+int	check_line(char *str)
 {
 	int		i;
 
@@ -28,7 +28,7 @@ int			check_line(char *str)
 	return (-1);
 }
 
-char		*ft_cutter(char *src, int len)
+char	*ft_cutter(char *src, int len)
 {
 	char	*str;
 	int		i;
@@ -36,7 +36,7 @@ char		*ft_cutter(char *src, int len)
 	i = 0;
 	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	while (i <= len)
+	while (i < len)
 	{
 		str[i] = src[i];
 		i++;
@@ -49,11 +49,11 @@ char*			returner(char **cache)
 {
 	int		len;
 	char	*temp;
-	char *ans;
+	char	*ans;
 
 	if ((len = check_line(*cache)) >= 0)
 	{
-		ans = ft_cutter(*cache, len);
+		ans = ft_cutter(*cache, len + 1);
 		temp = ft_strdup(*cache + len + 1);
 		free(*cache);
 		*cache = temp;
@@ -63,6 +63,11 @@ char*			returner(char **cache)
 	{
 		ans = *cache;
 		*cache = 0;
+		if(ft_strlen(ans)==0){
+			free(ans);
+			return(NULL);
+		}
+		
 		return (ans);
 	}
 	return (NULL);
@@ -86,7 +91,7 @@ char*			get_next_line(int fd)
 		cache = !cache ? ft_strdup(buffer) : ft_strjoin(cache, buffer);
 		if ((len = check_line(cache)) >= 0)
 		{
-			ans = ft_cutter(cache, len);
+			ans = ft_cutter(cache, len + 1);
 			temp = ft_strdup(&cache[len + 1]);
 			free(cache);
 			cache = temp;

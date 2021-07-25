@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 15:28:39 by sookang           #+#    #+#             */
-/*   Updated: 2021/06/22 15:32:44 by sookang          ###   ########.fr       */
+/*   Updated: 2021/07/25 14:59:21 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char					*ft_strjoin(char *s1, char const *s2)
 
 	c1 = (char *)s1;
 	c2 = (char *)s2;
-	if (!s1 || !s2)
+	if (!s1 && !s2)
 		return (NULL);
 	if (!(str = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1))))
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 19:54:05 by sookang           #+#    #+#             */
-/*   Updated: 2021/11/28 17:06:02 by sookang          ###   ########.fr       */
+/*   Updated: 2021/11/28 17:50:36 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 // • %x print a number in hexadecimal (base 16), with lowercase.
 // • %X print a number in hexadecimal (base 16), with uppercase.
 
-int ft_parse(char type, va_list *ap)
+int	ft_parse(char type, va_list *ap)
 {
-	int   length;
-	char *cp_str;
+	int		length;
+	char	*cp_str;
 
 	length = 0;
 	if (type == 'c')
@@ -43,10 +43,10 @@ int ft_parse(char type, va_list *ap)
 	return (length);
 }
 
-int ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
-	va_list ap;
-	int     length;
+	va_list	ap;
+	int		length;
 
 	length = 0;
 	va_start(ap, str);

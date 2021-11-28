@@ -7,8 +7,10 @@
 		"stdlib.h": "c",
 		"stdio.h": "c",
 		"cstdio": "c",
-		"_stdio.h": "c"
+		"_stdio.h": "c",
+		"ft_printf.h": "c"
 	},
+	"editor.insertSpaces": false,
 	// "C_Cpp.errorSquiggles": "Enabled",
 	"code-runner.executorMap": {
 		"sd":" -Werror -Wall -Wextra",

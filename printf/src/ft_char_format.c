@@ -6,22 +6,22 @@
 /*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 14:38:39 by sookang           #+#    #+#             */
-/*   Updated: 2021/11/28 14:55:33 by sookang          ###   ########.fr       */
+/*   Updated: 2021/11/28 17:49:10 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_print_c_format(char c)
+int	ft_print_c_format(char c)
 {
 	ft_putchar_fd(c, 1);
 	return (1);
 }
 
-int ft_print_s_format(char *str)
+int	ft_print_s_format(char *str)
 {
-	char *cp_str;
-	int   length;
+	char	*cp_str;
+	int		length;
 
 	length = 0;
 	if (str == NULL)
@@ -36,7 +36,7 @@ int ft_print_s_format(char *str)
 	return (length);
 }
 
-int ft_print_percent_format()
+int	ft_print_percent_format(void)
 {
 	ft_putchar_fd('%', 1);
 	return (1);

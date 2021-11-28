@@ -6,7 +6,7 @@
 #    By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/05 15:27:20 by sookang           #+#    #+#              #
-#    Updated: 2021/11/28 12:20:50 by sookang          ###   ########.fr        #
+#    Updated: 2021/11/28 15:03:13 by sookang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ CFLAGS	= -Werror -Wall -Wextra
 RM		= rm -f
 AR		= ar
 
-FILES = ft_printf
+FILES = ft_printf\
+				ft_char_format\
+				ft_digit_format\
 
 SRCS=	$(addprefix $(SRC_PATH),$(addsuffix .c, $(FILES)))
 OBJS=	$(addprefix ./,$(addsuffix .o, $(FILES)))

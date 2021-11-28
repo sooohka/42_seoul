@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 12:45:18 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/18 15:51:45 by sookang          ###   ########.fr       */
+/*   Updated: 2021/11/28 17:44:56 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 		last--;
 	if (first > last)
 		return (ft_strdup(""));
-	if (!(str = (char *)malloc(sizeof(char) * (last - first + 1 + 1))))
+	str = (char *)malloc(sizeof(char) * (last - first + 1 + 1));
+	if (!str)
 		return (NULL);
 	while (first <= last)
 		str[i++] = s1[first++];

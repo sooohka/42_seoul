@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:02:58 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/10 16:44:29 by sookang          ###   ########.fr       */
+/*   Updated: 2021/11/28 17:40:03 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isprint(int c)
+int	ft_isprint(int c)
 {
 	if ((c >= ' ' && c <= '~'))
 		return (1);

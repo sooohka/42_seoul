@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 17:51:32 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/18 15:35:45 by sookang          ###   ########.fr       */
+/*   Updated: 2021/11/28 17:42:08 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		rec(int n, int fd)
+static void	rec(int n, int fd)
 {
-	char c;
+	char	c;
 
 	if (n != 0)
 	{
@@ -24,7 +24,7 @@ static void		rec(int n, int fd)
 	}
 }
 
-void			ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	if (n == INT32_MIN)
 		write(fd, "-2147483648", 11);

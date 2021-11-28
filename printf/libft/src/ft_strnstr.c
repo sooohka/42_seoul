@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:20:38 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/18 16:29:33 by sookang          ###   ########.fr       */
+/*   Updated: 2021/11/28 17:44:21 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, unsigned int len)
 	unsigned int	i;
 	unsigned int	j;
 
-	src = (char*)haystack;
-	find = (char*)needle;
+	src = (char *)haystack;
+	find = (char *)needle;
 	i = 0;
 	j = 0;
 	if (*src == 0 && *find == 0)

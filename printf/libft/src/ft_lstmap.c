@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 15:42:30 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/23 19:51:20 by sookang          ###   ########.fr       */
+/*   Updated: 2021/11/28 17:40:51 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*cur;
 	t_list	*head;
@@ -27,7 +27,8 @@ t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	cur = cur->next;
 	while (cur)
 	{
-		if (!(next_child = ft_lstnew(f(cur->content))))
+		next_child = ft_lstnew(f(cur->content));
+		if (!next_child)
 		{
 			ft_lstclear(&head, del);
 			return (NULL);

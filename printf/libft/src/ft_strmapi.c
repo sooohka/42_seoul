@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 17:03:23 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/17 11:45:46 by sookang          ###   ########.fr       */
+/*   Updated: 2021/11/28 17:44:09 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (NULL);
 	j = 0;
 	i = (int)ft_strlen(s);
-	if (!(str = (char *)malloc((i + 1) * sizeof(char))))
+	str = (char *)malloc((i + 1) * sizeof(char));
+	if (!str)
 		return (NULL);
 	while (s[j])
 	{

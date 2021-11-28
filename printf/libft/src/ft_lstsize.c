@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 14:53:36 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/17 15:12:02 by sookang          ###   ########.fr       */
+/*   Updated: 2021/11/28 17:41:11 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
 	int		len;
 	t_list	*cur;

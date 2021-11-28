@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 13:28:34 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/23 20:21:20 by sookang          ###   ########.fr       */
+/*   Updated: 2021/11/28 17:43:14 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		get_strs_length(char *str, char c)
+static int	get_strs_length(char *str, char c)
 {
 	int		count;
 	int		i;
@@ -32,7 +32,7 @@ static int		get_strs_length(char *str, char c)
 	return (count + 1);
 }
 
-static char		**free_strs(char **strs)
+static char	**free_strs(char **strs)
 {
 	int		i;
 
@@ -46,11 +46,11 @@ static char		**free_strs(char **strs)
 	return (NULL);
 }
 
-static char		**assign_str(char **strs, char *str, char c, int total_len)
+static char	**assign_str(char **strs, char *str, char c, int total_len)
 {
-	int i;
-	int j;
-	int k;
+	int	i;
+	int	j;
+	int	k;
 
 	i = 0;
 	while (i < total_len)
@@ -60,7 +60,8 @@ static char		**assign_str(char **strs, char *str, char c, int total_len)
 		j = 0;
 		while (!(str[j] == c) && str[j])
 			j++;
-		if (!(strs[i] = (char *)malloc(sizeof(char) * (j + 1))))
+		strs[i] = (char *)malloc(sizeof(char) * (j + 1));
+		if (!strs[i])
 			return (free_strs(strs));
 		k = 0;
 		while (k < j)
@@ -72,7 +73,7 @@ static char		**assign_str(char **strs, char *str, char c, int total_len)
 	return (strs);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	int			total_len;
 	char		*str;
@@ -80,9 +81,10 @@ char			**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	str = (char*)s;
+	str = (char *)s;
 	total_len = get_strs_length(str, c);
-	if (!(strs = (char **)malloc(sizeof(char *) * (total_len + 1))))
+	strs = (char **)malloc(sizeof(char *) * (total_len + 1));
+	if (!strs)
 		return (NULL);
 	assign_str(strs, str, c, total_len);
 	return (strs);

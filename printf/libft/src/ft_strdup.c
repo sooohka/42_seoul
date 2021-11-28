@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 17:33:41 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/10 18:58:35 by sookang          ###   ########.fr       */
+/*   Updated: 2021/11/28 17:43:32 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ char	*ft_strdup(const char *s1)
 	int		i;
 
 	i = 0;
-	if (!(str = (char *)ft_calloc((ft_strlen(s1) + 1), sizeof(char))))
+	str = (char *)ft_calloc((ft_strlen(s1) + 1), sizeof(char));
+	if (!str)
 		return (NULL);
 	while (s1[i])
 	{

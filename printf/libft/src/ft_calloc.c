@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 17:21:39 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/10 18:05:58 by sookang          ###   ########.fr       */
+/*   Updated: 2021/11/28 17:39:53 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	*ft_calloc(size_t count, size_t size)
 	unsigned long	i;
 
 	i = 0;
-	if (!(container = malloc(count * size)))
+	container = malloc(count * size);
+	if (!container)
 		return (NULL);
 	loc = container;
 	while (i < count * size)

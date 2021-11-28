@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_xtoa.c                                          :+:      :+:    :+:   */
+/*   ft_tohex.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/28 17:16:39 by sookang           #+#    #+#             */
-/*   Updated: 2021/11/28 17:16:40 by sookang          ###   ########.fr       */
+/*   Created: 2021/11/28 17:16:48 by sookang           #+#    #+#             */
+/*   Updated: 2021/11/28 17:33:44 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	get_digit(unsigned int n)
+static int	get_digit(unsigned long long n)
 {
 	int		digit;
 
@@ -25,7 +25,7 @@ static int	get_digit(unsigned int n)
 	return (digit);
 }
 
-static void	ft_uint_to_hex(unsigned int n, char *str, int digit, char cas)
+static void	ft_ll_to_hex(unsigned long long n, char *str, int digit, char cas)
 {
 	int		temp;
 	int		cas_int;
@@ -47,7 +47,7 @@ static void	ft_uint_to_hex(unsigned int n, char *str, int digit, char cas)
 	}
 }
 
-char	*ft_xtoa(unsigned int n, char cas)
+char	*ft_tohex(unsigned long long n, char cas)
 {
 	char	*str;
 	int		digit;
@@ -59,6 +59,6 @@ char	*ft_xtoa(unsigned int n, char cas)
 	str = (char *) malloc((digit + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
-	ft_uint_to_hex(n, str, digit, cas);
+	ft_ll_to_hex(n, str, digit, cas);
 	return (str);
 }

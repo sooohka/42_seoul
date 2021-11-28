@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 16:27:42 by sookang           #+#    #+#             */
-/*   Updated: 2021/06/17 16:25:59 by sookang          ###   ########.fr       */
+/*   Updated: 2021/11/28 17:41:35 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memccpy(void *dst, const void *src
 	unsigned int	i;
 
 	dest = dst;
-	s = (unsigned char*)src;
+	s = (unsigned char *)src;
 	i = 0;
 	ch = (unsigned char)c;
 	while (i++ < n)

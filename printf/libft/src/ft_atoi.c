@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:23:32 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/18 16:00:14 by sookang          ###   ########.fr       */
+/*   Updated: 2021/11/28 17:37:54 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		is_space(char c)
+static int	is_space(char c)
 {
 	if (c == ' ' || c == '\n')
 		return (1);
@@ -23,11 +23,11 @@ static int		is_space(char c)
 	return (0);
 }
 
-int				ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int i;
-	int num;
-	int neg_flag;
+	int	i;
+	int	num;
+	int	neg_flag;
 
 	i = 0;
 	neg_flag = 1;

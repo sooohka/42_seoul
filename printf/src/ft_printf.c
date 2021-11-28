@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 19:54:05 by sookang           #+#    #+#             */
-/*   Updated: 2021/11/28 15:23:32 by sookang          ###   ########.fr       */
+/*   Updated: 2021/11/28 17:06:02 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,14 @@ int ft_parse(char type, va_list *ap)
 		length += ft_print_d_format(va_arg(*ap, int));
 	else if (type == 'i')
 		length += ft_print_d_format(va_arg(*ap, int));
-	else if (type =='u')
+	else if (type == 'u')
 		length += ft_print_u_format(va_arg(*ap, int));
+	else if (type == 'x')
+		length += ft_print_x_format(va_arg(*ap, int));
+	else if (type == 'X')
+		length += ft_print_X_format(va_arg(*ap, int));
+	else if (type == 'p')
+		length += ft_print_p_format(va_arg(*ap, long long));
 	return (length);
 }
 

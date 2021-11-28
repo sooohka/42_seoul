@@ -6,7 +6,7 @@
 #    By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/05 15:27:20 by sookang           #+#    #+#              #
-#    Updated: 2021/11/28 12:20:48 by sookang          ###   ########.fr        #
+#    Updated: 2021/11/28 16:37:39 by sookang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,9 @@ FILES=	ft_isalnum\
 		ft_lstlast\
 		ft_lstmap\
 		ft_lstnew\
-		ft_lstsize
+		ft_lstsize\
+		ft_unsigned_itoa\
+		ft_xtoa
 
 SRCS=	$(addprefix $(SRC_PATH),$(addsuffix .c, $(FILES)))
 OBJS=	$(addprefix ./,$(addsuffix .o, $(FILES)))

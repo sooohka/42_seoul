@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 18:19:19 by sookang           #+#    #+#             */
-/*   Updated: 2021/11/28 13:54:32 by sookang          ###   ########.fr       */
+/*   Updated: 2021/11/28 17:01:17 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,6 @@ void			ft_lstclear(t_list **lst, void(*del)(void *));
 void			ft_lstiter(t_list *lst, void(*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), \
 					void (*del)(void *));
+char			*ft_unsigned_itoa(unsigned int n);
+char			*ft_xtoa(unsigned int n, char cas);
 #endif

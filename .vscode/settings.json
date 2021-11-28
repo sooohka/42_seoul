@@ -4,7 +4,14 @@
 		"libft.h": "c",
 		"get_next_line.h": "c",
 		"get_next_line_bonus.h": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"stdio.h": "c",
+		"cstdio": "c",
+		"_stdio.h": "c"
 	},
-	"C_Cpp.errorSquiggles": "Enabled"
+	// "C_Cpp.errorSquiggles": "Enabled",
+	"code-runner.executorMap": {
+		"sd":" -Werror -Wall -Wextra",
+    "c": "cd $dir && make && gcc  $fileName -o $fileNameWithoutExt -L. -lftprintf && $dir$fileNameWithoutExt && rm $dir$fileNameWithoutExt",
+	}
 }

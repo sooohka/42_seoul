@@ -6,19 +6,15 @@
 /*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 19:54:05 by sookang           #+#    #+#             */
-/*   Updated: 2021/11/28 15:02:46 by sookang          ###   ########.fr       */
+/*   Updated: 2021/11/28 15:23:32 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 // • %p The void * pointer argument is printed in hexadecimal.
-// • %d print a decimal (base 10) number.
-// • %i print an integer in base 10.
-// • %u print an unsigned decimal (base 10) number.
 // • %x print a number in hexadecimal (base 16), with lowercase.
 // • %X print a number in hexadecimal (base 16), with uppercase.
-// • %% print a percent sign.
 
 int ft_parse(char type, va_list *ap)
 {
@@ -34,6 +30,10 @@ int ft_parse(char type, va_list *ap)
 		length += ft_print_percent_format();
 	else if (type == 'd')
 		length += ft_print_d_format(va_arg(*ap, int));
+	else if (type == 'i')
+		length += ft_print_d_format(va_arg(*ap, int));
+	else if (type =='u')
+		length += ft_print_u_format(va_arg(*ap, int));
 	return (length);
 }
 

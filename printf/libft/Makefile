@@ -6,7 +6,7 @@
 #    By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/05 15:27:20 by sookang           #+#    #+#              #
-#    Updated: 2021/11/27 17:29:18 by sookang          ###   ########.fr        #
+#    Updated: 2021/11/28 12:20:48 by sookang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,12 +65,12 @@ FILES=	ft_isalnum\
 		ft_lstsize
 
 SRCS=	$(addprefix $(SRC_PATH),$(addsuffix .c, $(FILES)))
-OBJS=	$(addprefix ,$(addsuffix .o, $(FILES)))
+OBJS=	$(addprefix ./,$(addsuffix .o, $(FILES)))
 
 all	:	$(NAME)
 
 $(NAME): $(OBJS)
-	$(AR) rc $@ $^
+	$(AR) rcs $@ $^
 
 $(OBJS): $(SRCS)
 	$(CC) $(FLAGS) -c $^

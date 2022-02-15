@@ -6,14 +6,14 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 14:49:27 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/17 14:52:36 by sookang          ###   ########.fr       */
+/*   Updated: 2022/02/15 18:56:15 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *newlst)
 {
-	new->next = *lst;
-	*lst = new;
+	newlst->next = *lst;
+	*lst = newlst;
 }

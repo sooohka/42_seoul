@@ -6,13 +6,13 @@
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 14:56:29 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/17 17:05:39 by sookang          ###   ########.fr       */
+/*   Updated: 2022/02/15 18:56:02 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *newlst)
 {
 	t_list	*cur;
 
@@ -20,7 +20,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		return ;
 	cur = *lst;
 	if (!cur)
-		*lst = new;
+		*lst = newlst;
 	else
-		ft_lstlast(cur)->next = new;
+		ft_lstlast(cur)->next = newlst;
 }

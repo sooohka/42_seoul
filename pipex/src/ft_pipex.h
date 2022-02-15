@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 15:45:43 by sookang           #+#    #+#             */
-/*   Updated: 2022/02/15 16:13:06 by sooho            ###   ########.fr       */
+/*   Updated: 2022/02/15 18:46:17 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <sys/wait.h>
 # include "../libft/src/libft.h"
 
-void ft_handle_error(char*str);
-void ft_free(char **str);
+void	ft_handle_error(char*str);
+void	ft_free(char **str);
+char	*ft_make_cmd(char *cmd, char *path);
 #endif

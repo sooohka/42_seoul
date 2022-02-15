@@ -6,7 +6,7 @@
 #    By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 15:26:54 by sookang           #+#    #+#              #
-#    Updated: 2022/02/14 17:23:13 by sookang          ###   ########.fr        #
+#    Updated: 2022/02/15 16:48:20 by sooho            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ LIBFT_NAME=libft.a
 
 
 CC=gcc
-CFLAGS=-Wall -Werror -Wextra
+CFLAGS=
+#-Wall -Werror -Wextra
 
 SRC_PATH=./src/
 LIBFT_PATH=./libft/
@@ -32,7 +33,7 @@ SRCS=$(addprefix $(SRC_PATH),$(addsuffix .c,$(FILES)))
 all:$(NAME)
 
 $(NAME):$(SRCS) $(LIBFT_NAME)
-	$(CC) $(CFLAGS) -o $@ -lft -L./ $^
+	$(CC) $(CFLAGS) -o $@ -lft -L./ $(SRCS)
 
 $(LIBFT_NAME):
 	@make -C $(LIBFT_PATH) $(LIBFT_NAME)

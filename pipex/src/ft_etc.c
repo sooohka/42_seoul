@@ -6,14 +6,24 @@
 /*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:23:41 by sookang           #+#    #+#             */
-/*   Updated: 2022/02/14 17:26:26 by sookang          ###   ########.fr       */
+/*   Updated: 2022/02/15 17:01:09 by sooho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pipex.h"
+#include <stdio.h>
 
-void ft_handle_error(char *str, int fd)
+void ft_handle_error(char *str)
 {
-	ft_putstr_fd(str, fd);
+	perror(str);
 	exit(1);
+}
+
+void ft_free(char **str)
+{
+	while(*str)
+	{
+		free(*str);
+		str++;
+	}
 }

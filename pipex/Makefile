@@ -6,7 +6,7 @@
 #    By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/14 15:26:54 by sookang           #+#    #+#              #
-#    Updated: 2022/02/15 16:48:20 by sooho            ###   ########.fr        #
+#    Updated: 2022/02/16 17:55:58 by sookang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,7 @@ LIBFT_NAME=libft.a
 
 
 CC=gcc
-CFLAGS=
-#-Wall -Werror -Wextra
+CFLAGS=-Wall -Werror -Wextra
 
 SRC_PATH=./src/
 LIBFT_PATH=./libft/
@@ -47,6 +46,7 @@ clean:
 	$(RM) $(OBJS)
 
 fclean: clean
+	@make fclean -C $(LIBFT_PATH)
 	$(RM) $(LIBFT_NAME)
 	$(RM) $(NAME)
 

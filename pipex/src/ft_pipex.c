@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 18:02:52 by sookang           #+#    #+#             */
-/*   Updated: 2022/02/15 18:59:42 by sookang          ###   ########.fr       */
+/*   Updated: 2022/02/16 20:30:45 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_parse_cmd(char *cmd, char **env)
 	return (NULL);
 }
 
-void	ft_parent(int pipeFd[2], int inFileFd, char *cmd, char **env)
+void	ft_parent(int pipe_fd[2], int in_file_fd, char *cmd, char **env)
 {
 	char	**args;
 	char	*execute_cmd;
@@ -52,18 +52,18 @@ void	ft_parent(int pipeFd[2], int inFileFd, char *cmd, char **env)
 	execute_cmd = ft_parse_cmd(args[0], env);
 	if (execute_cmd == NULL)
 		ft_handle_error("cmd not found");
-	close(pipeFd[0]);
-	if ((dup2(inFileFd, 0) == -1))
+	close(pipe_fd[0]);
+	if ((dup2(in_file_fd, 0) == -1))
 		ft_handle_error("inFile dup2 Error");
-	if ((dup2(pipeFd[1], 1) == -1))
+	if ((dup2(pipe_fd[1], 1) == -1))
 		ft_handle_error("pipeFd[1] dup2 Error");
 	execv(execute_cmd, args);
-	close(inFileFd);
-	close(pipeFd[1]);
+	close(in_file_fd);
+	close(pipe_fd[1]);
 	wait(NULL);
 }
 
-void	ft_child(int pipeFd[2], int outFileFd, char *cmd, char **env)
+void	ft_child(int pipe_fd[2], int out_file_fd, char *cmd, char **env)
 {
 	char	**args;
 	char	*execute_cmd;
@@ -72,14 +72,14 @@ void	ft_child(int pipeFd[2], int outFileFd, char *cmd, char **env)
 	execute_cmd = ft_parse_cmd(args[0], env);
 	if (execute_cmd == NULL)
 		ft_handle_error("cmd not found");
-	close(pipeFd[1]);
-	if ((dup2(pipeFd[0], 0) == -1))
+	close(pipe_fd[1]);
+	if ((dup2(pipe_fd[0], 0) == -1))
 		ft_handle_error("pipeFd[0] dup2 Error");
-	if ((dup2(outFileFd, 1) == -1))
+	if ((dup2(out_file_fd, 1) == -1))
 		ft_handle_error("outFile dup2 Error");
 	execv(execute_cmd, args);
-	close(pipeFd[0]);
-	close(outFileFd);
+	close(pipe_fd[0]);
+	close(out_file_fd);
 }
 
 int	main(int argc, char **argv, char **envp)

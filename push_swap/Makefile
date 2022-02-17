@@ -6,7 +6,7 @@
 #    By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/17 15:16:20 by sookang           #+#    #+#              #
-#    Updated: 2022/02/17 15:26:08 by sookang          ###   ########.fr        #
+#    Updated: 2022/02/17 17:36:10 by sooho            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ RM=rm -f
 SRC_PATH=./src/
 LIBFT_PATH=./libft/
 
-FILES=ft_push_swap
+FILES=ft_push_swap\
+      ft_util
 
 SRCS=$(addprefix $(SRC_PATH),$(addsuffix .c,$(FILES)))
 

@@ -6,20 +6,19 @@
 /*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:27:58 by sookang           #+#    #+#             */
-/*   Updated: 2022/02/17 18:15:44 by sooho            ###   ########.fr       */
+/*   Updated: 2022/02/18 18:29:27 by sooho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 #include <stdio.h>
 
-
 int ft_isnumber(char *str)
 {
 	int i = 0;
 
-	if (str[i] == '-')
-		i++;
+	if (str[0] == '-' || str[0] == '+')
+		i = 1;
 	while (str[i])
 	{
 		if (ft_isdigit(str[i]) == 0)
@@ -29,14 +28,13 @@ int ft_isnumber(char *str)
 	return (1);
 }
 
-
 char *ft_cutzero(char *str)
 {
 	int i = 0;
 
 	while (str[i] == '0')
 	{
-		if (i == (int)(ft_strlen(str)-1))
+		if (i == (int) (ft_strlen(str) - 1))
 			break;
 		i++;
 	}
@@ -48,13 +46,8 @@ char **ft_parse_args(int argc, char **argv)
 	char    **args;
 	char    **args_start;
 	int       len;
-	long long temp;
+	long long temp_number;
 
-	/* OK 1. 길이가 11을 초과하는지 검사
-	 * OK 2. 길이가 11일때 앞에부호가 음수인지 검사
-	 * OK 3. 숫자만 들어있는지 검사
-	 * OK 4. int범위 초과하는지 검사
-	 */
 	args = (char **) malloc(argc * sizeof(char *));
 	args_start = args;
 	while (*argv)
@@ -66,7 +59,7 @@ char **ft_parse_args(int argc, char **argv)
 			ft_free(args_start);
 			return (NULL);
 		}
-		else if (len == 11 && (ft_strncmp(*argv, "-", 1) != 0))
+		else if (len == 11 && ft_strncmp(*argv, "-", 1) != 0 && ft_strncmp(*argv, "+", 1) != 0)
 		{
 			ft_free(args_start);
 			return (NULL);
@@ -76,8 +69,8 @@ char **ft_parse_args(int argc, char **argv)
 			ft_free(args_start);
 			return (NULL);
 		}
-		temp = ft_atol(*argv);
-		if (temp > INT32_MAX || temp < INT32_MIN)
+		temp_number = ft_atol(*argv);
+		if (temp_number > INT32_MAX || temp_number < INT32_MIN)
 		{
 			ft_free(args_start);
 			return (NULL);
@@ -85,6 +78,21 @@ char **ft_parse_args(int argc, char **argv)
 		*args++ = ft_strdup(*argv++);
 	}
 	return args_start;
+}
+
+void testStack(char **args)
+{
+	t_stack *stack = ft_init_stack(args);
+	ft_print_stack(stack, 1);
+	ft_putendl_fd("", 1);
+
+	ft_swap_front(stack);
+	ft_print_stack(stack, 1);
+	ft_putendl_fd("", 1);
+
+	ft_swap_front(stack);
+	ft_print_stack(stack, 1);
+	ft_putendl_fd("", 1);
 }
 
 int main(int argc, char **argv)
@@ -97,14 +105,13 @@ int main(int argc, char **argv)
 	if (!args)
 		ft_error();
 
-
-
+	testStack(args);
 	ft_free(args);
-	while (*args)
-	{
-		ft_putstr_fd(*args, 1);
-		ft_putstr_fd("\n", 1);
-		args++;
-	}
-
+	/** while (*args) */
+	/** { */
+	/**     ft_putstr_fd(*args, 1); */
+	/**     ft_putstr_fd("\n", 1); */
+	/**     args++; */
+	/** } */
+	/**  */
 }

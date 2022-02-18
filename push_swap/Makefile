@@ -6,7 +6,7 @@
 #    By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/17 15:16:20 by sookang           #+#    #+#              #
-#    Updated: 2022/02/18 17:49:32 by sooho            ###   ########.fr        #
+#    Updated: 2022/02/18 19:10:21 by sooho            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,10 @@ FILES=ft_push_swap\
 	  ft_stack\
 	  ft_stack2\
 	  ft_stack3\
+	  ft_push\
+	  ft_swap\
+	  ft_rotate\
+	  ft_rotate2\
 
 SRCS=$(addprefix $(SRC_PATH),$(addsuffix .c,$(FILES)))
 

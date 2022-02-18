@@ -6,7 +6,7 @@
 /*   By: sooho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:36:19 by sooho             #+#    #+#             */
-/*   Updated: 2022/02/18 18:29:10 by sooho            ###   ########.fr       */
+/*   Updated: 2022/02/18 19:14:27 by sooho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,11 @@ void ft_swap_front(t_stack *stack);
 int ft_check_duplicate_stack(t_stack *stack, int value);
 void ft_print_stack(t_stack *stack, int fd);
 t_stack *ft_init_stack(char **args);
+void ft_free_stack(t_stack *stack);
+
+
+
+void ft_pa(t_stack *a, t_stack *b);
+void ft_pb(t_stack *a, t_stack *b);
 
 #endif

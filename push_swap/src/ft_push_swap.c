@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:27:58 by sookang           #+#    #+#             */
-/*   Updated: 2022/02/18 18:29:27 by sooho            ###   ########.fr       */
+/*   Updated: 2022/02/18 20:18:39 by sooho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,21 +83,30 @@ char **ft_parse_args(int argc, char **argv)
 void testStack(char **args)
 {
 	t_stack *stack = ft_init_stack(args);
+	t_stack *b = ft_init_stack(NULL);
+
+	ft_pb(stack, b);
+	ft_pb(stack, b);
+
 	ft_print_stack(stack, 1);
 	ft_putendl_fd("", 1);
-
-	ft_swap_front(stack);
-	ft_print_stack(stack, 1);
+	ft_print_stack(b, 1);
 	ft_putendl_fd("", 1);
 
-	ft_swap_front(stack);
+	ft_pa(stack, b);
+	ft_pa(stack, b);
+
 	ft_print_stack(stack, 1);
+	ft_putendl_fd("", 1);
+	ft_print_stack(b, 1);
 	ft_putendl_fd("", 1);
 }
 
 int main(int argc, char **argv)
 {
-	char **args;
+	char   **args;
+	t_stack *stack;
+
 	if (argc == 1)
 		return (0);
 
@@ -106,7 +115,16 @@ int main(int argc, char **argv)
 		ft_error();
 
 	testStack(args);
-	ft_free(args);
+	stack = ft_init_stack(args);
+	/** ft_free(args); */
+	/** if (stack == NULL) */
+	/** { */
+	/**     ft_free_stack(stack); */
+	/**     ft_error(); */
+	/**     return (0); */
+	/** } */
+	/** ft_free_stack(stack); */
+
 	/** while (*args) */
 	/** { */
 	/**     ft_putstr_fd(*args, 1); */

@@ -41,8 +41,15 @@ int ft_pop_front_stack(t_stack *stack)
 	int     val;
 	t_node *temp;
 
-	if (stack->size == 0)
-		return (0);
+	if (stack->size == 1)
+	{
+		stack->size -= 1;
+		val = stack->front->value;
+		ft_free_node(stack->front);
+		stack->front = NULL;
+		stack->back = NULL;
+		return (val);
+	}
 	stack->size -= 1;
 	val = stack->front->value;
 	temp = stack->front->next;
@@ -57,8 +64,15 @@ int ft_pop_back_stack(t_stack *stack)
 	int     val;
 	t_node *temp;
 
-	if (stack->size == 0)
-		return (0);
+	if (stack->size == 1)
+	{
+		stack->size -= 1;
+		val = stack->front->value;
+		ft_free_node(stack->front);
+		stack->front = NULL;
+		stack->back = NULL;
+		return (val);
+	}
 	stack->size -= 1;
 	val = stack->back->value;
 	temp = stack->back->prev;

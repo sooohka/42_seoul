@@ -5,7 +5,7 @@ void ft_shift_front_stack(t_stack *stack)
 	t_node *front;
 	t_node *back;
 
-	if (stack->size == 0)
+	if (stack->size == 0 || stack->size == 1)
 		return;
 	front = stack->front;
 	back = stack->back;
@@ -25,7 +25,7 @@ void ft_shift_back_stack(t_stack *stack)
 	t_node *front;
 	t_node *back;
 
-	if (stack->size == 0)
+	if (stack->size == 0 || stack->size == 1)
 		return;
 	front = stack->front;
 	back = stack->back;

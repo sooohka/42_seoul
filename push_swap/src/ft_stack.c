@@ -1,4 +1,5 @@
 #include "./ft_push_swap.h"
+#include <stdlib.h>
 
 void ft_push_back_stack(t_stack *stack, int value)
 {
@@ -36,48 +37,56 @@ void ft_push_front_stack(t_stack *stack, int value)
 	stack->front = node;
 }
 
-int ft_pop_front_stack(t_stack *stack)
+int *ft_pop_front_stack(t_stack *stack)
 {
 	int     val;
+	int    *val_ptr;
 	t_node *temp;
 
+	if (stack->size == 0)
+		return NULL;
+	val = stack->front->value;
+	val_ptr = &val;
 	if (stack->size == 1)
 	{
-		stack->size -= 1;
-		val = stack->front->value;
 		ft_free_node(stack->front);
 		stack->front = NULL;
 		stack->back = NULL;
-		return (val);
+	}
+	else
+	{
+		temp = stack->front->next;
+		ft_free_node(stack->front);
+		stack->front = temp;
+		stack->front->prev = NULL;
 	}
 	stack->size -= 1;
-	val = stack->front->value;
-	temp = stack->front->next;
-	ft_free_node(stack->front);
-	stack->front = temp;
-	stack->front->prev = NULL;
-	return (val);
+	return (val_ptr);
 }
 
-int ft_pop_back_stack(t_stack *stack)
+int *ft_pop_back_stack(t_stack *stack)
 {
 	int     val;
+	int    *val_ptr;
 	t_node *temp;
 
+	if (stack->size == 0)
+		return NULL;
+	val = stack->front->value;
+	val_ptr = &val;
 	if (stack->size == 1)
 	{
-		stack->size -= 1;
-		val = stack->front->value;
 		ft_free_node(stack->front);
 		stack->front = NULL;
 		stack->back = NULL;
-		return (val);
+	}
+	else
+	{
+		temp = stack->back->prev;
+		ft_free_node(stack->back);
+		stack->back = temp;
+		stack->back->next = NULL;
 	}
 	stack->size -= 1;
-	val = stack->back->value;
-	temp = stack->back->prev;
-	ft_free_node(stack->back);
-	stack->back = temp;
-	stack->back->next = NULL;
-	return (val);
+	return (val_ptr);
 }

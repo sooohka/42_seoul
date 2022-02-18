@@ -13,7 +13,7 @@ t_stack *ft_init_stack(char **args)
 	while (*args)
 	{
 		val = ft_atoi(*args);
-		if (!ft_check_duplicate_stack(stack, val))
+		if (!ft_check_hasvalue_stack(stack, val))
 			return (NULL);
 		ft_push_back_stack(stack, val);
 		args++;
@@ -37,7 +37,7 @@ void ft_free_stack(t_stack *stack)
 	free(stack);
 }
 
-int ft_check_duplicate_stack(t_stack *stack, int value)
+int ft_check_hasvalue_stack(t_stack *stack, int value)
 {
 	t_node *cur_node;
 
@@ -45,6 +45,22 @@ int ft_check_duplicate_stack(t_stack *stack, int value)
 	while (cur_node)
 	{
 		if (cur_node->value == value)
+			return (0);
+		cur_node = cur_node->next;
+	}
+	return (1);
+}
+
+int ft_check_issorted_stack(t_stack *stack)
+{
+	t_node *cur_node;
+	int     prev_value;
+
+	prev_value = stack->front->value;
+	cur_node = stack->front;
+	while (cur_node)
+	{
+		if (cur_node->value < prev_value)
 			return (0);
 		cur_node = cur_node->next;
 	}

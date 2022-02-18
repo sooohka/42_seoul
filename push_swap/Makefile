@@ -6,7 +6,7 @@
 #    By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/17 15:16:20 by sookang           #+#    #+#              #
-#    Updated: 2022/02/18 19:10:21 by sooho            ###   ########.fr        #
+#    Updated: 2022/02/18 21:28:38 by sooho            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC_PATH=./src/
 LIBFT_PATH=./libft/
 
 FILES=ft_push_swap\
+	  ft_parser\
       ft_util\
 	  ft_node\
 	  ft_stack\
@@ -31,6 +32,7 @@ FILES=ft_push_swap\
 	  ft_swap\
 	  ft_rotate\
 	  ft_rotate2\
+	  ft_game\
 
 SRCS=$(addprefix $(SRC_PATH),$(addsuffix .c,$(FILES)))
 

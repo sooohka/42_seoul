@@ -62,6 +62,7 @@ int ft_check_issorted_stack(t_stack *stack)
 	{
 		if (cur_node->value < prev_value)
 			return (0);
+		prev_value = cur_node->value;
 		cur_node = cur_node->next;
 	}
 	return (1);

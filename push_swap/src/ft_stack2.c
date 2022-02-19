@@ -1,12 +1,12 @@
 #include "ft_push_swap.h"
 
-void ft_shift_front_stack(t_stack *stack)
+int ft_shift_front_stack(t_stack *stack)
 {
 	t_node *front;
 	t_node *back;
 
 	if (stack->size == 0 || stack->size == 1)
-		return;
+		return 0;
 	front = stack->front;
 	back = stack->back;
 
@@ -18,15 +18,16 @@ void ft_shift_front_stack(t_stack *stack)
 	stack->back = back->prev;
 	back->prev = NULL;
 	back->next = front;
+	return 1;
 }
 
-void ft_shift_back_stack(t_stack *stack)
+int ft_shift_back_stack(t_stack *stack)
 {
 	t_node *front;
 	t_node *back;
 
 	if (stack->size == 0 || stack->size == 1)
-		return;
+		return 0;
 	front = stack->front;
 	back = stack->back;
 
@@ -38,16 +39,18 @@ void ft_shift_back_stack(t_stack *stack)
 	front->prev = back;
 	stack->front = front->next;
 	front->next = NULL;
+	return 1;
 }
 
-void ft_swap_front(t_stack *stack)
+int ft_swap_front(t_stack *stack)
 {
 	int temp;
 
 	if (stack->front == NULL && stack->front->next == NULL)
-		return;
+		return 0;
 
 	temp = stack->front->value;
 	stack->front->value = stack->front->next->value;
 	stack->front->next->value = temp;
+	return 1;
 }

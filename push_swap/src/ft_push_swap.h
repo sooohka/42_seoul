@@ -6,7 +6,7 @@
 /*   By: sooho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:36:19 by sooho             #+#    #+#             */
-/*   Updated: 2022/02/19 14:12:22 by sooho            ###   ########.fr       */
+/*   Updated: 2022/02/19 17:05:10 by sooho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ int *ft_pop_front_stack(t_stack *stack);
 int *ft_pop_back_stack(t_stack *stack);
 
 //ft_stack2.c
-void ft_shift_front_stack(t_stack *stack);
-void ft_shift_back_stack(t_stack *stack);
-void ft_swap_front(t_stack *stack);
+int ft_shift_front_stack(t_stack *stack);
+int ft_shift_back_stack(t_stack *stack);
+int ft_swap_front(t_stack *stack);
 
 //ft_stack3.c
 int ft_check_hasvalue_stack(t_stack *stack, int value);
@@ -62,8 +62,9 @@ void ft_print_stack(t_stack *stack, int fd);
 t_stack *ft_init_stack(char **args);
 void ft_free_stack(t_stack *stack);
 
-//ft_play.c
+//ft_game.c
 void ft_play(t_stack *a,t_stack *b);
+int *ft_quick_sort(int *arr,int start,int end);
 
 //ft_push.c
 void ft_pa(t_stack *a, t_stack *b);
@@ -83,5 +84,6 @@ void ft_rr(t_stack *a_stack,t_stack *b_stack);
 void ft_rra(t_stack *stack);
 void ft_rrb(t_stack *stack);
 void ft_rrr(t_stack *a_stack,t_stack *b_stack);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sooho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:36:19 by sooho             #+#    #+#             */
-/*   Updated: 2022/02/19 17:05:10 by sooho            ###   ########.fr       */
+/*   Updated: 2022/02/21 10:05:25 by sooho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,11 @@ int ft_swap_front(t_stack *stack);
 
 //ft_stack3.c
 int ft_check_hasvalue_stack(t_stack *stack, int value);
-int ft_check_issorted_stack(t_stack *stack);
+int ft_check_issorted_stack(t_stack *stack,int len);
 void ft_print_stack(t_stack *stack, int fd);
 t_stack *ft_init_stack(char **args);
 void ft_free_stack(t_stack *stack);
 
-//ft_game.c
-void ft_play(t_stack *a,t_stack *b);
-int *ft_quick_sort(int *arr,int start,int end);
 
 //ft_push.c
 void ft_pa(t_stack *a, t_stack *b);
@@ -85,5 +82,15 @@ void ft_rra(t_stack *stack);
 void ft_rrb(t_stack *stack);
 void ft_rrr(t_stack *a_stack,t_stack *b_stack);
 
+//ft_quick_sort
+int *ft_stack_to_array(t_stack*stack,int len);
+void swap(int *a, int *b);
+void ft_quick_sort(int *arr, int start, int end);
+int ft_get_stack_range(t_node *stack_start, t_node *stack_end);
+
+//ft_game.c
+void ft_play(t_stack *a,t_stack *b);
+void ft_quick_sort(int *arr,int start,int end);
+t_node *ft_find_middle(t_stack *stack,int len);
 
 #endif

@@ -51,19 +51,23 @@ int ft_check_hasvalue_stack(t_stack *stack, int value)
 	return (1);
 }
 
-int ft_check_issorted_stack(t_stack *stack)
+int ft_check_issorted_stack(t_stack *stack, int len)
 {
-	t_node *cur_node;
-	int     prev_value;
+	t_node *node;
+	int     cur_value;
 
-	prev_value = stack->front->value;
-	cur_node = stack->front;
-	while (cur_node)
+	if (stack->size == 0)
+		return (1);
+	cur_value = stack->front->value;
+	node = stack->front;
+
+	while (len > 0)
 	{
-		if (cur_node->value < prev_value)
+		if (node->value < cur_value)
 			return (0);
-		prev_value = cur_node->value;
-		cur_node = cur_node->next;
+		cur_value = node->value;
+		node = node->next;
+		len -= 1;
 	}
 	return (1);
 }
@@ -96,9 +100,9 @@ void ft_print_stack(t_stack *stack, int fd)
 		cur_node = cur_node->next;
 	}
 	ft_putstr_fd("size: ", fd);
-	ft_putendl_fd(ft_itoa(stack->size), fd);
-	ft_putstr_fd("front: ", fd);
-	ft_putendl_fd(ft_itoa(stack->front->value), fd);
-	ft_putstr_fd("back: ", fd);
+	ft_putstr_fd(ft_itoa(stack->size), fd);
+	ft_putstr_fd(" front: ", fd);
+	ft_putstr_fd(ft_itoa(stack->front->value), fd);
+	ft_putstr_fd(" back: ", fd);
 	ft_putendl_fd(ft_itoa(stack->back->value), fd);
 }

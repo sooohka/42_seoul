@@ -1,76 +1,127 @@
-
 #include "ft_push_swap.h"
+void logger(t_stack *a_stack, t_stack *b_stack);
+void ft_sort_b_stack(t_stack *a_stack, t_stack *b_stack, int len);
 
-int *ft_stack_to_array(t_stack *stack)
+/*
+ ** a가 큰거
+ ** b가 작은거
+ ** stack 반으로 쪼갠다.
+ */
+void ft_split_stack(t_stack *a_stack, t_stack *b_stack, int middle)
 {
-	int    *arr;
-	int     i;
-	t_node *cur_node;
+	t_node *front;
 
-	i = 0;
-
-	arr = (int *) malloc(stack->size * sizeof(int));
-	cur_node = stack->front;
-	while (cur_node)
+	front = a_stack->front;
+	while (1)
 	{
-		arr[i] = cur_node->value;
-		i++;
-		cur_node = cur_node->next;
+		if (a_stack->front->value < middle)
+			ft_pb(a_stack, b_stack);
+		else if (a_stack->front->value >= middle)
+			ft_ra(a_stack);
+		if (a_stack->front == front)
+			return;
 	}
-	return arr;
 }
 
-void swap(int *a, int *b)
+void ft_sort_a_stack(t_stack *a_stack, t_stack *b_stack, int len)
 {
-	int temp;
+	t_node *middle;
+	int     ra_count;
+	int     pb_count;
 
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-int *ft_quick_sort(int *arr, int start, int end)
-{
-	int left;
-	int right;
-	int pivot;
-
-	if (start >= end)
-		return arr;
-	pivot = start;
-	left = pivot + 1;
-	right = end;
-	while (left <= right)
+	ra_count = 0;
+	pb_count = 0;
+	if (len == 1)
+		return;
+	if (ft_check_issorted_stack(a_stack, len))
+		return;
+	middle = ft_find_middle(a_stack, len);
+	ft_putstr_fd("middle: ", 1);
+	ft_putendl_fd(ft_itoa(middle->value), 1);
+	if (middle == NULL)
+		return;
+	while (len > 0)
 	{
-		if (arr[left] > arr[pivot] && arr[right] < arr[pivot])
-			swap(&arr[left], &arr[right]);
-		if (arr[pivot] >= arr[left])
-			left += 1;
-		if (arr[pivot] <= arr[right])
-			right -= 1;
+		if (a_stack->front->value <= middle->value)
+		{
+			ft_pb(a_stack, b_stack);
+			pb_count += 1;
+		}
+		else if (a_stack->front->value > middle->value)
+		{
+			ft_ra(a_stack);
+			ra_count += 1;
+		}
+		len -= 1;
 	}
-	swap(&arr[pivot], &arr[right]);
-	ft_quick_sort(arr, start, right - 1);
-	ft_quick_sort(arr, right + 1, end);
-	return NULL;
+	while (ra_count > 0)
+	{
+		ft_rra(a_stack);
+		ra_count -= 1;
+	}
+	ft_sort_b_stack(a_stack, b_stack, pb_count);
+	ft_sort_a_stack(a_stack, b_stack, a_stack->size);
 }
 
-// a가 큰거
-// b가 작은거
+void ft_sort_b_stack(t_stack *a_stack, t_stack *b_stack, int len)
+{
+	t_node *middle;
+	int     rb_count;
+	int     pa_count;
+
+	rb_count = 0;
+	pa_count = 0;
+	if (len == 0)
+		return;
+	/** if (len == 1) */
+	/** { */
+	/**     ft_pa(a_stack, b_stack); */
+	/**     return; */
+	/** } */
+	if (ft_check_issorted_stack(b_stack, len))
+		return;
+	middle = ft_find_middle(b_stack, len);
+	ft_putstr_fd("middle: ", 1);
+	ft_putendl_fd(ft_itoa(middle->value), 1);
+	if (middle == NULL)
+		return;
+	while (len > 0)
+	{
+		if (b_stack->front->value <= middle->value)
+		{
+			ft_pa(a_stack, b_stack);
+			pa_count += 1;
+		}
+		else if (b_stack->front->value > middle->value)
+		{
+			ft_rb(b_stack);
+			rb_count += 1;
+		}
+		len -= 1;
+	}
+	while (rb_count > 0)
+	{
+		ft_rrb(b_stack);
+		rb_count -= 1;
+	}
+	ft_sort_a_stack(a_stack, b_stack, pa_count);
+	ft_sort_b_stack(a_stack, b_stack, b_stack->size);
+}
 
 void ft_play(t_stack *a_stack, t_stack *b_stack)
 {
-	int *arr;
+	t_node *middle;
 
-	if (ft_check_issorted_stack(a_stack) == 1)
+	if (ft_check_issorted_stack(a_stack, a_stack->size) == 1)
 		return;
-	arr = ft_stack_to_array(a_stack);
-	ft_quick_sort(arr, 0, a_stack->size - 1);
+	/** middle = ft_find_middle(a_stack, a_stack->size); */
+	/** ft_split_stack(a_stack, b_stack, middle->value); */
+	ft_sort_a_stack(a_stack, b_stack, a_stack->size);
+	logger(a_stack, b_stack);
+}
 
-	for (int i = 0; i < a_stack->size; i++)
-		ft_putendl_fd(ft_itoa(arr[i]), 1);
-
-	// logger
+void logger(t_stack *a_stack, t_stack *b_stack)
+{
 	ft_putendl_fd("A_STACK", 1);
 	ft_print_stack(a_stack, 1);
 	ft_putendl_fd("", 1);

@@ -56,7 +56,7 @@ int ft_check_issorted_stack(t_stack *stack, int len)
 	t_node *node;
 	int     cur_value;
 
-	if (stack->size == 0)
+	if (len == 0 || len == 1)
 		return (1);
 	cur_value = stack->front->value;
 	node = stack->front;
@@ -64,6 +64,26 @@ int ft_check_issorted_stack(t_stack *stack, int len)
 	while (len > 0)
 	{
 		if (node->value < cur_value)
+			return (0);
+		cur_value = node->value;
+		node = node->next;
+		len -= 1;
+	}
+	return (1);
+}
+
+int ft_check_issorted_rev_stack(t_stack *stack, int len)
+{
+	t_node *node;
+	int     cur_value;
+
+	if (len == 0 || len == 1)
+		return (1);
+	cur_value = stack->front->value;
+	node = stack->front;
+	while (len > 0)
+	{
+		if (node->value > cur_value)
 			return (0);
 		cur_value = node->value;
 		node = node->next;

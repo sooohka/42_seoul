@@ -3,11 +3,13 @@
 void ft_rra(t_stack *stack)
 {
 	ft_shift_front_stack(stack);
+	ft_putendl_fd("rra", 1);
 }
 
 void ft_rrb(t_stack *stack)
 {
 	ft_shift_front_stack(stack);
+	ft_putendl_fd("rrb", 1);
 };
 void ft_rrr(t_stack *a_stack, t_stack *b_stack)
 {

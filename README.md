@@ -1,3 +1,11 @@
-# 42_seoul
+# 42-seoul
 
-42_seoul_pisine 과정 문제 풀이들
+[Libft](./libft/README.md)
+
+[Gnl](./gnl/README.md)
+
+[printf](./printf/README.md)
+
+[pipex](./pipex/README.md)
+
+

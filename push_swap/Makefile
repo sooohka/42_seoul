@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: sookang <sookang@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/02/17 15:16:20 by sookang           #+#    #+#              #
-#    Updated: 2022/02/20 10:14:31 by sooho            ###   ########.fr        #
+#    Created: 2021/03/25 04:31:56 by sookang          #+#    #+#              #
+#    Updated: 2022/04/01 15:46:32 by sookang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,26 +14,29 @@ NAME=push_swap
 LIBFT_NAME=libft.a
 
 CC=gcc
-CFLAGS=-Wall  -Wextra
-#-Werror 
-RM=rm -f
+CFLAGS=-Wall -Werror -Wextra
 
 SRC_PATH=./src/
 LIBFT_PATH=./libft/
 
-FILES=ft_push_swap\
-	  ft_parser\
-      ft_util\
-	  ft_node\
-	  ft_stack\
-	  ft_stack2\
-	  ft_stack3\
-	  ft_push\
-	  ft_swap\
-	  ft_rotate\
-	  ft_rotate2\
-	  ft_quick_sort\
-	  ft_game\
+RM=rm -rf
+
+FILES	=	main			\
+				list		\
+				list_sort		\
+				list_u1		\
+				list_u2		\
+				check			\
+				init			\
+				case			\
+				algo_short	\
+				algo_bigger	\
+				norm			\
+				get			\
+				op_p			\
+				op_r			\
+				op_s 			\
+				util
 
 SRCS=$(addprefix $(SRC_PATH),$(addsuffix .c,$(FILES)))
 
@@ -43,18 +46,17 @@ $(NAME):$(SRCS) $(LIBFT_NAME)
 	$(CC) $(CFLAGS) -o $@ -lft -L./ $(SRCS)
 
 $(LIBFT_NAME):
-	@make -C $(LIBFT_PATH)
+	@make -C $(LIBFT_PATH) $(LIBFT_NAME)
 	@cp $(LIBFT_PATH)$(LIBFT_NAME) ./
+
+re: fclean all
 
 clean:
 	@make clean -C $(LIBFT_PATH)
 
-fclean: clean
+fclean:
 	@make fclean -C $(LIBFT_PATH)
 	$(RM) $(LIBFT_NAME)
 	$(RM) $(NAME)
 
-re:fclean all
-
-
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re

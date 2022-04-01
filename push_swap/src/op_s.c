@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   op_s.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 14:56:29 by sookang           #+#    #+#             */
-/*   Updated: 2021/05/17 17:05:39 by sookang          ###   ########.fr       */
+/*   Created: 2022/04/01 15:58:21 by sookang           #+#    #+#             */
+/*   Updated: 2022/04/01 15:58:22 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	s_stk(t_stk **top)
 {
-	t_list	*cur;
+	int		i;
+	int		j;
+	t_stk	*tmp;
 
-	if (!lst)
-		return ;
-	cur = *lst;
-	if (!cur)
-		*lst = new;
-	else
-		ft_lstlast(cur)->next = new;
+	tmp = NULL;
+	if ((*top) && (*top)->nxt)
+	{
+		tmp = *top;
+		i = (*top)->num;
+		j = (*top)->nxt->num;
+		tmp = *top;
+		(*top)->num = j;
+		tmp = *top;
+		(*top)->nxt->num = i;
+		(*top) = tmp;
+	}
 }

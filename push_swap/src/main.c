@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:56:01 by sookang           #+#    #+#             */
-/*   Updated: 2022/04/01 16:01:36 by sookang          ###   ########.fr       */
+/*   Updated: 2022/04/01 16:35:53 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ char	**fill_args(t_var *v, int argc, char **argv)
 
 void	push_swap(t_var *v, int argc, char **argv)
 {
-	t_stk	*stk;
+	t_stack	*stack;
 
-	stk = NULL;
+	stack = NULL;
 	v->split = fill_args(v, argc, argv);
 	check_dup(v->split);
 	check_numbers(v->split);
-	v->a = fill_list(v, v->split, stk);
+	v->a = fill_list(v, v->split, stack);
 	if (check_sort(&v->a, list_size(v->a)) == 1)
 		ft_exit_ps("Error\n", 0);
 	v->len = list_size(v->a);
-	free_stk(&stk);
+	free_stack(&stack);
 	if (v->len <= 10)
 		sort_short(&(v->a), &(v->b), v->len, v);
 	else

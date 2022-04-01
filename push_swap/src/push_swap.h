@@ -6,7 +6,7 @@
 /*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:53:42 by sookang           #+#    #+#             */
-/*   Updated: 2022/04/01 16:01:36 by sookang          ###   ########.fr       */
+/*   Updated: 2022/04/01 16:54:33 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@
 # define SB 7
 # define SA 8
 
-typedef struct s_stk
+typedef struct s_stack
 {
 	int				num;
-	struct s_stk	*nxt;
-	struct s_stk	*prv;
-}					t_stk;
+	struct s_stack	*next;
+	struct s_stack	*prev;
+}					t_stack;
 
 typedef struct s_var
 {
@@ -45,43 +45,48 @@ typedef struct s_var
 	int				len;
 	int				print;
 	int				fd;
-	t_stk			*a;
-	t_stk			*b;
+	t_stack			*a;
+	t_stack			*b;
 }					t_var;
 
-void				rr_stk(t_stk **, t_stk *);
-void				p_stk(t_stk **, t_stk **, t_stk *);
-void				r_stk(t_stk **);
-void				s_stk(t_stk **);
+void				rr_stack(t_stack **stack_1, t_stack *tmp);
+void				p_stack(t_stack **stack_1, t_stack **stack_2, t_stack *tmp);
+void				r_stack(t_stack **stack);
+void				s_stack(t_stack **stack);
 
-int					check_sort(t_stk **, int);
-void				check_dup(char **);
-int					check_numbers(char **);
-int					check_pivot(t_stk *, int, int);
-void				pick_case(t_stk **, t_stk **, int, t_var *);
-void				sort_short(t_stk **, t_stk **, int, t_var *);
-void				sort_bigger(t_stk **, t_stk **, int, t_var *);
-void				normalize_a(t_stk **, t_stk **, t_var *, int);
-void				normalize_b(t_stk **, t_stk **, t_var *, int);
+int					check_sort(t_stack **stack, int len);
+void				check_dup(char **strs);
+int					check_numbers(char **strs);
+int					check_pivot(t_stack *stack, int a, int b);
+void				pick_case(t_stack **stack_1, t_stack **stack_2, int op,
+						t_var *v);
+void				sort_short(t_stack **stack_1, t_stack **stack_2, int op,
+						t_var *v);
+void				sort_bigger(t_stack **stack_1, t_stack **stack_2, int op,
+						t_var *v);
+void				normalize_a(t_stack **stack_1, t_stack **stack_2, t_var *v,
+						int b);
+void				normalize_b(t_stack **stack_1, t_stack **stack_2, t_var *v,
+						int b);
 
-void				ft_exit_ps(char *, int);
-t_var				*ft_init_var(t_var *);
-t_stk				*fill_list(t_var *, char **, t_stk *);
+void				ft_exit_ps(char *str, int fd);
+t_var				*ft_init_var(t_var *v);
+t_stack				*fill_list(t_var *v, char **split, t_stack *stack);
 void				ft_free_array(char **array);
-t_stk				*ft_lst_dup(t_stk *);
-t_stk				*ft_lstsort(t_stk *);
+t_stack				*ft_lst_dup(t_stack *stack);
+t_stack				*ft_lstsort(t_stack *stack);
 
-int					list_size(t_stk *);
-void				add_back(t_stk **, t_stk *);
-void				add_back_r(t_stk **);
-void				add_front(t_stk **, t_stk *);
-void				free_stk(t_stk **);
-t_stk				*ft_lst_bottom(t_stk *);
-int					ft_lstnbr(t_stk **, int);
-int					get_min(t_stk *);
-int					get_max(t_stk *);
-int					get_idx(t_stk *, int, int);
-int					get_pivot(t_stk *);
+int					list_size(t_stack *stack);
+void				add_back(t_stack **stack, t_stack *tmp);
+void				add_back_r(t_stack **stack);
+void				add_front(t_stack **stack, t_stack *tmp);
+void				free_stack(t_stack **stack);
+t_stack				*ft_lst_bottom(t_stack *tmp);
+int					ft_lstnbr(t_stack **stack, int a);
+int					get_min(t_stack *tmp);
+int					get_max(t_stack *tmp);
+int					get_idx(t_stack *tmp, int a, int b);
+int					get_pivot(t_stack *tmp);
 
 int					ft_strcmp(char *s1, char *s2);
 long long			ft_atol(char *s);

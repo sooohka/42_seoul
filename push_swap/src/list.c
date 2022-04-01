@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:52:41 by sookang           #+#    #+#             */
-/*   Updated: 2022/04/01 15:53:20 by sookang          ###   ########.fr       */
+/*   Updated: 2022/04/01 16:06:06 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stk	*fill_list(t_var *v, char **split, t_stk *tmp)
+t_stack	*fill_list(t_var *v, char **split, t_stack *tmp)
 {
 	int	i;
 
 	i = -1;
 	while (split[++i])
 	{
-		tmp = malloc(sizeof(t_stk));
+		tmp = malloc(sizeof(t_stack));
 		if (tmp == NULL)
 			return (NULL);
 		tmp->num = ft_atol(split[i]);
 		if (tmp->num > 2147483647 || tmp->num < -2147483648)
 			ft_exit_ps("Error\n", 1);
-		tmp->nxt = NULL;
-		tmp->prv = NULL;
+		tmp->next = NULL;
+		tmp->prev = NULL;
 		add_back(&v->a, tmp);
 		tmp = NULL;
 	}

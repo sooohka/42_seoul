@@ -3,46 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   op_r.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:56:54 by sookang           #+#    #+#             */
-/*   Updated: 2022/04/01 15:56:56 by sookang          ###   ########.fr       */
+/*   Updated: 2022/04/01 16:06:06 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stk	*rr_swap(t_stk *top, t_stk *tmp)
+t_stack	*rr_swap(t_stack *top, t_stack *tmp)
 {
-	while (top->nxt)
-		top = top->nxt;
+	while (top->next)
+		top = top->next;
 	tmp->num = top->num;
-	tmp->nxt = NULL;
-	tmp->prv = NULL;
+	tmp->next = NULL;
+	tmp->prev = NULL;
 	return (tmp);
 }
 
-void	rr_bottom(t_stk **top)
+void	rr_bottom(t_stack **top)
 {
 	while ((*top))
 	{
-		if ((*top)->nxt->nxt == NULL)
+		if ((*top)->next->next == NULL)
 			break ;
-		*top = (*top)->nxt;
+		*top = (*top)->next;
 	}
-	free((*top)->nxt);
-	(*top)->nxt = NULL;
+	free((*top)->next);
+	(*top)->next = NULL;
 }
 
-void	rr_stk(t_stk **top, t_stk *tmp)
+void	rr_stack(t_stack **top, t_stack *tmp)
 {
-	t_stk	*a;
+	t_stack	*a;
 
 	a = NULL;
 	tmp = NULL;
 	if (*top)
 	{
-		tmp = (t_stk *)malloc(sizeof(t_stk));
+		tmp = (t_stack *)malloc(sizeof(t_stack));
 		if (tmp == NULL)
 			return ;
 		tmp = rr_swap(*top, tmp);
@@ -53,11 +53,11 @@ void	rr_stk(t_stk **top, t_stk *tmp)
 	}
 }
 
-void	r_stk(t_stk **top)
+void	r_stack(t_stack **top)
 {
 	if (*top)
 	{
-		*top = (*top)->nxt;
+		*top = (*top)->next;
 		add_back_r(top);
 	}
 }

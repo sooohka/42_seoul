@@ -3,54 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   get.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:54:49 by sookang           #+#    #+#             */
-/*   Updated: 2022/04/01 15:54:50 by sookang          ###   ########.fr       */
+/*   Updated: 2022/04/01 16:53:16 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_idx(t_stk *stk, int num, int flag)
+int	get_idx(t_stack *stack, int num, int flag)
 {
 	int	i;
 
 	i = 1;
 	if (flag == 1)
 	{
-		while (stk)
+		while (stack)
 		{
-			if (stk->num <= num)
+			if (stack->num <= num)
 				return (i);
-			stk = stk->nxt;
+			stack = stack->next;
 			i++;
 		}
 	}
 	if (flag == 2)
 	{
-		while (stk)
+		while (stack)
 		{
-			if (stk->num >= num)
+			if (stack->num >= num)
 				return (i);
-			stk = stk->nxt;
+			stack = stack->next;
 			i++;
 		}
 	}
 	return (-1);
 }
 
-int	get_pivot(t_stk *stk)
+int	get_pivot(t_stack *stack)
 {
-	t_stk	*tmp;
+	t_stack	*tmp;
 	int		len;
 	int		pvt;
 
 	pvt = 0;
 	len = 0;
 	tmp = NULL;
-	len = list_size(stk);
-	tmp = ft_lstsort(stk);
+	len = list_size(stack);
+	tmp = ft_lstsort(stack);
 	if (len <= 10)
 		pvt = ft_abs(len / 2);
 	else if (len > 10 && len < 200)
@@ -60,38 +60,38 @@ int	get_pivot(t_stk *stk)
 	return (ft_lstnbr(&tmp, pvt));
 }
 
-int	get_max(t_stk *stk)
+int	get_max(t_stack *stack)
 {
 	int		max;
-	t_stk	*tmp;
+	t_stack	*tmp;
 
 	max = 0;
 	tmp = NULL;
-	if (stk)
+	if (stack)
 	{
-		max = stk->num;
-		tmp = stk;
-		while (stk)
+		max = stack->num;
+		tmp = stack;
+		while (stack)
 		{
-			if (stk->num >= max)
-				max = stk->num;
-			stk = stk->nxt;
+			if (stack->num >= max)
+				max = stack->num;
+			stack = stack->next;
 		}
-		stk = tmp;
+		stack = tmp;
 	}
 	return (max);
 }
 
-int	get_min(t_stk *stk)
+int	get_min(t_stack *stack)
 {
 	int	min;
 
-	min = stk->num;
-	while (stk)
+	min = stack->num;
+	while (stack)
 	{
-		if (stk->num < min)
-			min = stk->num;
-		stk = stk->nxt;
+		if (stack->num < min)
+			min = stack->num;
+		stack = stack->next;
 	}
 	return (min);
 }

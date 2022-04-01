@@ -3,33 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   list_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:55:11 by sookang           #+#    #+#             */
-/*   Updated: 2022/04/01 15:55:15 by sookang          ###   ########.fr       */
+/*   Updated: 2022/04/01 16:06:06 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_lstnbr(t_stk **stk, int idx)
+int	ft_lstnbr(t_stack **stack, int idx)
 {
-	t_stk	*tmp;
+	t_stack	*tmp;
 	int		i;
 
 	i = 0;
-	tmp = *stk;
+	tmp = *stack;
 	while (tmp != NULL)
 	{
 		if (i == idx)
 			return (tmp->num);
 		i++;
-		tmp = tmp->nxt;
+		tmp = tmp->next;
 	}
 	return (1);
 }
 
-void	ft_lstswp(t_stk *x, t_stk *y)
+void	ft_lstswp(t_stack *x, t_stack *y)
 {
 	int	tmp;
 
@@ -38,28 +38,28 @@ void	ft_lstswp(t_stk *x, t_stk *y)
 	y->num = tmp;
 }
 
-t_stk	*ft_lstsort(t_stk *stk)
+t_stack	*ft_lstsort(t_stack *stack)
 {
-	t_stk	*base;
-	t_stk	*tmp;
-	t_stk	*cmp;
+	t_stack	*base;
+	t_stack	*tmp;
+	t_stack	*cmp;
 
 	base = NULL;
-	base = stk;
+	base = stack;
 	tmp = NULL;
 	cmp = NULL;
-	while (base->nxt)
+	while (base->next)
 	{
 		cmp = base;
-		tmp = base->nxt;
+		tmp = base->next;
 		while (tmp)
 		{
 			if (cmp->num > tmp->num)
 				cmp = tmp;
-			tmp = tmp->nxt;
+			tmp = tmp->next;
 		}
 		ft_lstswp(base, cmp);
-		base = base->nxt;
+		base = base->next;
 	}
-	return (stk);
+	return (stack);
 }

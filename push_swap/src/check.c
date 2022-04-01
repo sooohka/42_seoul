@@ -6,24 +6,24 @@
 /*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:51:24 by sookang           #+#    #+#             */
-/*   Updated: 2022/04/01 16:00:51 by sookang          ###   ########.fr       */
+/*   Updated: 2022/04/01 16:39:23 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_sort(t_stk **a, int len)
+int	check_sort(t_stack **a, int len)
 {
-	t_stk	*tmp;
+	t_stack	*tmp;
 
 	if (list_size(*a) != len)
 		return (0);
 	(void)len;
 	tmp = *a;
-	while (tmp && tmp->nxt)
+	while (tmp && tmp->next)
 	{
-		if ((tmp)->nxt != NULL && ((tmp)->num < (tmp)->nxt->num))
-			(tmp) = tmp->nxt;
+		if ((tmp)->next != NULL && ((tmp)->num < (tmp)->next->num))
+			(tmp) = tmp->next;
 		else
 			return (0);
 	}
@@ -92,7 +92,7 @@ int	check_numbers(char **argv)
 	return (1);
 }
 
-int	check_pivot(t_stk *a, int pvt, int flag)
+int	check_pivot(t_stack *a, int pvt, int flag)
 {
 	while (a)
 	{
@@ -100,13 +100,13 @@ int	check_pivot(t_stk *a, int pvt, int flag)
 		{
 			if (a->num <= pvt)
 				return (1);
-			a = a->nxt;
+			a = a->next;
 		}
 		if (flag == 2)
 		{
 			if (a->num == pvt)
 				return (1);
-			a = a->nxt;
+			a = a->next;
 		}
 	}
 	return (0);

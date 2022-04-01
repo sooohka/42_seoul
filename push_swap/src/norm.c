@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   norm.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:58:10 by sookang           #+#    #+#             */
-/*   Updated: 2022/04/01 15:58:11 by sookang          ###   ########.fr       */
+/*   Updated: 2022/04/01 16:06:06 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	normalize_a(t_stk **a, t_stk **b, t_var *v, int pvt)
+void	normalize_a(t_stack **a, t_stack **b, t_var *v, int pvt)
 {
 	int	idx;
 	int	num;
@@ -25,7 +25,7 @@ void	normalize_a(t_stk **a, t_stk **b, t_var *v, int pvt)
 		pick_case(a, b, RRA, v);
 }
 
-void	normalize_b(t_stk **a, t_stk **b, t_var *v, int pvt)
+void	normalize_b(t_stack **a, t_stack **b, t_var *v, int pvt)
 {
 	int	idx;
 	int	num;

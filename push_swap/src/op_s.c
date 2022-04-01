@@ -3,31 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   op_s.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:58:21 by sookang           #+#    #+#             */
-/*   Updated: 2022/04/01 15:58:22 by sookang          ###   ########.fr       */
+/*   Updated: 2022/04/01 16:06:07 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	s_stk(t_stk **top)
+void	s_stack(t_stack **top)
 {
 	int		i;
 	int		j;
-	t_stk	*tmp;
+	t_stack	*tmp;
 
 	tmp = NULL;
-	if ((*top) && (*top)->nxt)
+	if ((*top) && (*top)->next)
 	{
 		tmp = *top;
 		i = (*top)->num;
-		j = (*top)->nxt->num;
+		j = (*top)->next->num;
 		tmp = *top;
 		(*top)->num = j;
 		tmp = *top;
-		(*top)->nxt->num = i;
+		(*top)->next->num = i;
 		(*top) = tmp;
 	}
 }

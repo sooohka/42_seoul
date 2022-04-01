@@ -3,12 +3,13 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sookang <sookang@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: sookang <sookang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/03/25 04:31:56 by sookang          #+#    #+#              #
-#    Updated: 2022/04/01 15:46:32 by sookang          ###   ########.fr        #
+#    Created: 2022/04/01 16:33:44 by sookang           #+#    #+#              #
+#    Updated: 2022/04/01 16:33:46 by sookang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 NAME=push_swap
 LIBFT_NAME=libft.a

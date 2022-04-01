@@ -3,34 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   list_u1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sookang <sookang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sookang <sookang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:57:51 by sookang           #+#    #+#             */
-/*   Updated: 2022/04/01 15:57:54 by sookang          ###   ########.fr       */
+/*   Updated: 2022/04/01 16:06:06 by sookang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_stk(t_stk **stk)
+void	free_stack(t_stack **stack)
 {
-	t_stk	*tmp;
+	t_stack	*tmp;
 
-	if (*stk)
+	if (*stack)
 	{
-		while (*stk)
+		while (*stack)
 		{
-			tmp = (*stk)->nxt;
-			free(*stk);
-			*stk = NULL;
-			(*stk) = tmp;
+			tmp = (*stack)->next;
+			free(*stack);
+			*stack = NULL;
+			(*stack) = tmp;
 		}
-		free(*stk);
-		*stk = NULL;
+		free(*stack);
+		*stack = NULL;
 	}
 }
 
-int	list_size(t_stk *a)
+int	list_size(t_stack *a)
 {
 	int	len;
 
@@ -38,47 +38,47 @@ int	list_size(t_stk *a)
 	while (a)
 	{
 		len++;
-		a = a->nxt;
+		a = a->next;
 	}
 	return (len);
 }
 
-void	add_back(t_stk **top, t_stk *new)
+void	add_back(t_stack **top, t_stack *new)
 {
-	t_stk	*tmp;
+	t_stack	*tmp;
 
 	if (*top == NULL)
 		*top = new;
 	else
 	{
 		tmp = *top;
-		while (tmp->nxt)
-			tmp = tmp->nxt;
-		tmp->nxt = new;
-		new->prv = tmp;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
+		new->prev = tmp;
 	}
 }
 
-void	add_back_r(t_stk **top)
+void	add_back_r(t_stack **top)
 {
-	t_stk	*tmp1;
-	t_stk	*tmp2;
+	t_stack	*tmp1;
+	t_stack	*tmp2;
 
 	tmp1 = NULL;
 	tmp1 = *top;
-	tmp2 = (*top)->prv;
-	while (tmp1->nxt)
-		tmp1 = tmp1->nxt;
-	tmp1->nxt = tmp2;
-	tmp1->nxt->prv = tmp1;
-	tmp1->nxt->nxt = NULL;
+	tmp2 = (*top)->prev;
+	while (tmp1->next)
+		tmp1 = tmp1->next;
+	tmp1->next = tmp2;
+	tmp1->next->prev = tmp1;
+	tmp1->next->next = NULL;
 }
 
-void	add_front(t_stk **top, t_stk *new)
+void	add_front(t_stack **top, t_stack *new)
 {
-	new->nxt = (*top);
-	new->prv = NULL;
+	new->next = (*top);
+	new->prev = NULL;
 	if ((*top) != NULL)
-		(*top)->prv = new;
+		(*top)->prev = new;
 	(*top) = new;
 }
